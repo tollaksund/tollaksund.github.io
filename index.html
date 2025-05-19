@@ -100,6 +100,11 @@
     .spacer {
       height: 60px;
     }
+
+    section#about {
+      border-top-left-radius: 40px;
+      border-top-right-radius: 40px;
+    }
   </style>
 </head>
 <body>
@@ -118,10 +123,17 @@
     <a href="#contact">Contact</a>
   </div>
 
-  <!-- Hero -->
-  <div id="home" class="hero">
-    <h1>Welcome to Tollak Sund’s Website</h1>
-  </div>
+  /* Hero section */
+  .hero {
+    height: 90vh; /* 👈 changed from 100vh */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.8);
+    text-align: center;
+    padding: 0 20px;
+  }
 
   <div class="spacer"></div>
 
