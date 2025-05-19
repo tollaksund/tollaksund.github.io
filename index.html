@@ -110,17 +110,27 @@
       height: 60px;
     }
 
-    .project-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
+    /* Project Carousel */
+    .carousel-wrapper {
+      position: relative;
+      max-width: 100%;
+      overflow: hidden;
       margin-top: 40px;
     }
 
+    .project-carousel {
+      display: flex;
+      transition: transform 0.3s ease-in-out;
+      scroll-behavior: smooth;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 2rem;
+      padding-bottom: 1rem;
+    }
+
     .project-card {
-      width: 300px;
-      text-align: left;
+      flex: 0 0 300px;
+      scroll-snap-align: start;
       background: white;
       border: 1px solid #ccc;
       border-radius: 10px;
@@ -129,7 +139,6 @@
       color: #333;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
       transition: transform 0.2s ease;
-      flex-shrink: 0;
     }
 
     .project-card:hover {
@@ -155,6 +164,38 @@
     .project-card .text p {
       margin: 0;
       font-size: 0.95em;
+    }
+
+    .scroll-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 1.2em;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .scroll-button:hover {
+      background: #eee;
+    }
+
+    .scroll-left {
+      left: -20px;
+    }
+
+    .scroll-right {
+      right: -20px;
+    }
+
+    @media (max-width: 768px) {
+      .scroll-button {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -187,30 +228,50 @@
     <h2>Projects</h2>
     <p>Explore some of the projects I’ve worked on below:</p>
 
-    <div class="project-grid">
-      <a class="project-card" href="project1.html">
-        <img src="VarehusRobot_cover.jpg" alt="Autonomous Warehouse Robot">
-        <div class="text">
-          <h3>Autonomous Warehouse Robot</h3>
-          <p>A robot that uses sensors and actuators to navigate a dynamic warehouse environment.</p>
-        </div>
-      </a>
+    <div class="carousel-wrapper">
+      <button class="scroll-button scroll-left" onclick="scrollCarousel(-1)">←</button>
+      <div class="project-carousel" id="projectCarousel">
+        <a class="project-card" href="project4.html">
+          <img src="https://via.placeholder.com/300x180.png?text=Autonomous+Drone" alt="Autonomous Drone">
+          <div class="text">
+            <h3>Autonomous Drone</h3>
+            <p>A drone designed for autonomous indoor navigation using visual markers and sensors.</p>
+          </div>
+        </a>
 
-      <a class="project-card" href="project2.html">
-        <img src="linjeRobot.jpg" alt="Line-Following Robot">
-        <div class="text">
-          <h3>Line-Following Robot</h3>
-          <p>A robot that follows a line using IR sensors and PID control for precise movement.</p>
-        </div>
-      </a>
+        <a class="project-card" href="project1.html">
+          <img src="VarehusRobot_cover.jpg" alt="Autonomous Warehouse Robot">
+          <div class="text">
+            <h3>Autonomous Warehouse Robot</h3>
+            <p>A robot that uses sensors and actuators to navigate a dynamic warehouse environment.</p>
+          </div>
+        </a>
 
-      <a class="project-card" href="project3.html">
-        <img src="https://via.placeholder.com/300x180.png?text=Survival+Game" alt="Survival Game">
-        <div class="text">
-          <h3>Survival Game</h3>
-          <p>A 2D Unity survival game featuring crafting, combat, and world generation.</p>
-        </div>
-      </a>
+        <a class="project-card" href="project2.html">
+          <img src="linjeRobot.jpg" alt="Line-Following Robot">
+          <div class="text">
+            <h3>Line-Following Robot</h3>
+            <p>A robot that follows a line using IR sensors and PID control for precise movement.</p>
+          </div>
+        </a>
+
+        <a class="project-card" href="project5.html">
+          <img src="https://via.placeholder.com/300x180.png?text=Urchin+Remover" alt="Urchin Remover">
+          <div class="text">
+            <h3>Urchin Remover</h3>
+            <p>A mechatronic system that targets invasive sea urchins to restore marine ecosystems.</p>
+          </div>
+        </a>
+
+        <a class="project-card" href="project3.html">
+          <img src="https://via.placeholder.com/300x180.png?text=Survival+Game" alt="Survival Game">
+          <div class="text">
+            <h3>Survival Game</h3>
+            <p>A 2D Unity survival game featuring crafting, combat, and world generation.</p>
+          </div>
+        </a>
+      </div>
+      <button class="scroll-button scroll-right" onclick="scrollCarousel(1)">→</button>
     </div>
   </section>
 
@@ -233,5 +294,12 @@
     </p>
   </section>
 
+  <script>
+    function scrollCarousel(direction) {
+      const carousel = document.getElementById('projectCarousel');
+      const scrollAmount = 320; // px
+      carousel.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+    }
+  </script>
 </body>
 </html>
