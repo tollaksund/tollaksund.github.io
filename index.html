@@ -20,15 +20,17 @@
       color: #333;
     }
 
-    /* Background image */
-    .background {
+    /* Background video */
+    .background-video {
       position: fixed;
       top: 0;
       left: 0;
+      width: 100vw;
       height: 100vh;
-      width: 100%;
-      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80') center center / cover no-repeat;
+      object-fit: cover;
       z-index: -1;
+      opacity: 1;
+      pointer-events: none;
     }
 
     /* Navbar */
@@ -95,7 +97,6 @@
       line-height: 1.6;
     }
 
-    /* To prevent content hiding behind navbar */
     .spacer {
       height: 60px;
     }
@@ -103,8 +104,13 @@
 </head>
 <body>
 
-  <div class="background"></div>
+  <!-- Background video -->
+  <video autoplay muted loop playsinline class="background-video">
+    <source src="https://cdn.coverr.co/videos/coverr-mountains-sky-2707/1080p.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
+  <!-- Navigation -->
   <div class="navbar">
     <a href="#home">Home</a>
     <a href="#about">About</a>
@@ -112,12 +118,14 @@
     <a href="#contact">Contact</a>
   </div>
 
+  <!-- Hero -->
   <div id="home" class="hero">
     <h1>Welcome to Tollak Sund’s Website</h1>
   </div>
 
   <div class="spacer"></div>
 
+  <!-- About Section -->
   <section id="about">
     <h2>About Me</h2>
     <p>
@@ -126,6 +134,7 @@
     </p>
   </section>
 
+  <!-- Projects Section -->
   <section id="projects">
     <h2>Projects</h2>
     <p>
@@ -133,13 +142,15 @@
     </p>
   </section>
 
+  <!-- Contact Section -->
   <section id="contact">
-  <h2>Contact</h2>
-  <p>
-    📧 <strong>Email:</strong> <a href="mailto:tollak.sund@andeby.no">tollak.sund@andeby.no</a><br>
-    📱 <strong>Phone:</strong> +47 475 20 330<br>
-  </p>
-</section>
+    <h2>Contact</h2>
+    <p>
+      📧 <strong>Email:</strong> <a href="mailto:tollak.sund@andeby.no">tollak.sund@andeby.no</a><br>
+      📱 <strong>Phone:</strong> +47 475 20 330<br><br>
+      You can also connect with me on LinkedIn or reach out via a contact form (coming soon).
+    </p>
+  </section>
 
 </body>
 </html>
