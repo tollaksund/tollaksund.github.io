@@ -235,7 +235,7 @@
     <div class="carousel-wrapper">
       <button class="scroll-button scroll-left" onclick="scrollCarousel(-1)">←</button>
       <div class="project-carousel" id="projectCarousel">
-        <div style="flex: 0 0 300px;"></div>
+
 
         <a class="project-card" href="project4.html">
           <img src="https://via.placeholder.com/300x180.png?text=Autonomous+Drone" alt="Autonomous Drone">
@@ -306,6 +306,15 @@
       const scrollAmount = 320;
       carousel.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
     }
+  
+    // Center the first project card on load
+    window.addEventListener('load', () => {
+      const carousel = document.getElementById('projectCarousel');
+      const cardWidth = 300 + 32; // card + gap
+      const viewportWidth = window.innerWidth;
+      const scrollOffset = cardWidth / 2 - viewportWidth / 2 + cardWidth;
+      carousel.scrollLeft = scrollOffset;
+    });
   </script>
 
 </body>
