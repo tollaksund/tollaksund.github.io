@@ -5,26 +5,93 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Autonomous Warehouse Robot</title>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 2rem;
       background-color: #f9f9f9;
       color: #333;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.95);
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .navbar > div {
+      position: relative;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      padding: 0.5rem;
+    }
+
+    .navbar a:hover {
+      color: #0077cc;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 2.8rem;
+      left: 0;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      min-width: 200px;
+      z-index: 999;
+      flex-direction: column;
+    }
+
+    .dropdown-content a {
+      padding: 0.8rem 1rem;
+      text-align: left;
+      color: #333;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f0f0f0;
+    }
+
+    .navbar .dropdown:hover .dropdown-content {
+      display: flex;
+    }
+
+    .spacer {
+      height: 80px;
     }
 
     .container {
       max-width: 900px;
       margin: auto;
+      padding: 2rem 1rem;
       background: white;
-      padding: 2rem;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+      border-radius: 8px;
     }
 
     img {
       max-width: 100%;
       border-radius: 8px;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
 
     h1 {
@@ -44,6 +111,25 @@
   </style>
 </head>
 <body>
+
+  <!-- Navbar with dropdown -->
+  <div class="navbar">
+    <div><a href="index.html#home">Home</a></div>
+    <div class="dropdown">
+      <a href="index.html#projects">Projects ▾</a>
+      <div class="dropdown-content">
+        <a href="project1.html">Autonomous Warehouse Robot</a>
+        <a href="project2.html">Laser Tracker</a>
+        <a href="project3.html">Survival Game</a>
+      </div>
+    </div>
+    <div><a href="index.html#about">About</a></div>
+    <div><a href="index.html#contact">Contact</a></div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <!-- Main Content -->
   <div class="container">
     <h1>Autonomous Warehouse Robot</h1>
     <img src="VarehusRobot_cover.jpg" alt="Autonomous Warehouse Robot">
@@ -58,7 +144,8 @@
       The robot was 3D-printed, custom-wired, and coded in C++/Python depending on the microcontroller used.
     </p>
 
-    <a class="back" href="index.html">← Back to main page</a>
+    <a class="back" href="index.html#projects">← Back to projects</a>
   </div>
+
 </body>
 </html>
