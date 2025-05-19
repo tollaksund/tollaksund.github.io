@@ -301,24 +301,54 @@
 
   <!-- ✅ JavaScript that centers the first card on load -->
   <script>
-    function scrollCarousel(direction) {
-      const carousel = document.getElementById('projectCarousel');
-      const scrollAmount = 320;
-      carousel.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+  function scrollCarousel(direction) {
+    const carousel = document.getElementById('projectCarousel');
+    const scrollAmount = 320;
+    carousel.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+  }
+
+  function updateScrollButtons() {
+    const carousel = document.getElementById('projectCarousel');
+    const leftButton = document.querySelector('.scroll-left');
+    const rightButton = document.querySelector('.scroll-right');
+
+    const scrollLeft = carousel.scrollLeft;
+    const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
+
+    if (scrollLeft <= 5) {
+      leftButton.style.display = 'none';
+    } else {
+      leftButton.style.display = 'block';
     }
 
-    // Center the first project card
-    window.addEventListener('load', () => {
-      const carousel = document.getElementById('projectCarousel');
-      const firstCard = carousel.querySelector('.project-card');
-      if (firstCard) {
-        const cardRect = firstCard.getBoundingClientRect();
-        const carouselRect = carousel.getBoundingClientRect();
-        const scrollOffset = cardRect.left - carouselRect.left - (window.innerWidth / 2 - cardRect.width / 2);
-        carousel.scrollLeft += scrollOffset;
-      }
-    });
-  </script>
+    if (scrollLeft >= maxScrollLeft - 5) {
+      rightButton.style.display = 'none';
+    } else {
+      rightButton.style.display = 'block';
+    }
+  }
+
+  // Scroll to center the first card on load
+  window.addEventListener('load', () => {
+    const carousel = document.getElementById('projectCarousel');
+    const firstCard = carousel.querySelector('.project-card');
+    if (firstCard) {
+      const cardRect = firstCard.getBoundingClientRect();
+      const carouselRect = carousel.getBoundingClientRect();
+      const scrollOffset = cardRect.left - carouselRect.left - (window.innerWidth / 2 - cardRect.width / 2);
+      carousel.scrollLeft += scrollOffset;
+    }
+
+    updateScrollButtons();
+  });
+
+  // Update buttons when carousel scrolls or window resizes
+  window.addEventListener('resize', updateScrollButtons);
+  window.addEventListener('load', () => {
+    const carousel = document.getElementById('projectCarousel');
+    carousel.addEventListener('scroll', updateScrollButtons);
+  });
+</script>
 
 </body>
 </html>
