@@ -315,7 +315,7 @@
     const scrollLeft = carousel.scrollLeft;
     const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
 
-    if (scrollLeft <= 5) {
+    if (Math.round(scrollLeft) <= 1) {
       leftButton.style.display = 'none';
     } else {
       leftButton.style.display = 'block';
