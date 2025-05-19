@@ -59,14 +59,27 @@
 
     /* Hero section */
     .hero {
-      height: 90vh;
+      height: 95vh;
+      position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
       color: white;
-      text-shadow: 1px 1px 6px rgba(0,0,0,0.8);
+      text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8);
       text-align: center;
       padding: 0 20px;
+      z-index: 1;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+      z-index: -1;
     }
 
     .hero h1 {
@@ -100,11 +113,6 @@
     .spacer {
       height: 60px;
     }
-
-    section#about {
-      border-top-left-radius: 40px;
-      border-top-right-radius: 40px;
-    }
   </style>
 </head>
 <body>
@@ -123,17 +131,10 @@
     <a href="#contact">Contact</a>
   </div>
 
-  /* Hero section */
-  .hero {
-    height: 90vh; /* 👈 changed from 100vh */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-shadow: 1px 1px 6px rgba(0,0,0,0.8);
-    text-align: center;
-    padding: 0 20px;
-  }
+  <!-- Hero -->
+  <div id="home" class="hero">
+    <h1>Welcome to Tollak Sund’s Website</h1>
+  </div>
 
   <div class="spacer"></div>
 
