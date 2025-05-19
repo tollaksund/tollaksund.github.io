@@ -307,13 +307,16 @@
       carousel.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
     }
   
-    // Center the first project card on load
+    // Scroll to center the first project card on page load
     window.addEventListener('load', () => {
       const carousel = document.getElementById('projectCarousel');
-      const cardWidth = 300 + 32; // card + gap
-      const viewportWidth = window.innerWidth;
-      const scrollOffset = cardWidth / 2 - viewportWidth / 2 + cardWidth;
-      carousel.scrollLeft = scrollOffset;
+      const firstCard = carousel.querySelector('.project-card');
+      if (firstCard) {
+        const cardWidth = firstCard.offsetWidth;
+        const gap = 32; // matches CSS gap
+        const scrollOffset = firstCard.offsetLeft - (window.innerWidth / 2 - cardWidth / 2);
+        carousel.scrollTo({ left: scrollOffset, behavior: 'auto' });
+      }
     });
   </script>
 
