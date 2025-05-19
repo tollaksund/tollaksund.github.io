@@ -120,12 +120,18 @@
 
     .project-carousel {
       display: flex;
-      transition: transform 0.3s ease-in-out;
-      scroll-behavior: smooth;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
+      justify-content: center;
       gap: 2rem;
-      padding-bottom: 1rem;
+      padding: 1rem 50vw 1rem 50vw; /* creates space to center the first card */
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE */
+    }
+
+    .project-carousel::-webkit-scrollbar {
+      display: none; /* Chrome/Safari */
     }
 
     .project-card {
@@ -185,16 +191,20 @@
     }
 
     .scroll-left {
-      left: -20px;
+      left: 10px;
     }
 
     .scroll-right {
-      right: -20px;
+      right: 10px;
     }
 
     @media (max-width: 768px) {
       .scroll-button {
         display: none;
+      }
+
+      .project-carousel {
+        padding: 1rem;
       }
     }
   </style>
