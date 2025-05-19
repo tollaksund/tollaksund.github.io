@@ -236,7 +236,6 @@
       <button class="scroll-button scroll-left" onclick="scrollCarousel(-1)">←</button>
       <div class="project-carousel" id="projectCarousel">
 
-
         <a class="project-card" href="project4.html">
           <img src="https://via.placeholder.com/300x180.png?text=Autonomous+Drone" alt="Autonomous Drone">
           <div class="text">
@@ -300,22 +299,23 @@
     </p>
   </section>
 
+  <!-- ✅ JavaScript that centers the first card on load -->
   <script>
     function scrollCarousel(direction) {
       const carousel = document.getElementById('projectCarousel');
       const scrollAmount = 320;
       carousel.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
     }
-  
-    // Scroll to center the first project card on page load
+
+    // Center the first project card
     window.addEventListener('load', () => {
       const carousel = document.getElementById('projectCarousel');
       const firstCard = carousel.querySelector('.project-card');
       if (firstCard) {
-        const cardWidth = firstCard.offsetWidth;
-        const gap = 32; // matches CSS gap
-        const scrollOffset = firstCard.offsetLeft - (window.innerWidth / 2 - cardWidth / 2);
-        carousel.scrollTo({ left: scrollOffset, behavior: 'auto' });
+        const cardRect = firstCard.getBoundingClientRect();
+        const carouselRect = carousel.getBoundingClientRect();
+        const scrollOffset = cardRect.left - carouselRect.left - (window.innerWidth / 2 - cardRect.width / 2);
+        carousel.scrollLeft += scrollOffset;
       }
     });
   </script>
