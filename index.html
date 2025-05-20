@@ -312,7 +312,7 @@
     const leftButton = document.querySelector('.scroll-left');
     const rightButton = document.querySelector('.scroll-right');
 
-    const atStart = carousel.scrollLeft <= 0.5;
+    const atStart = carousel.scrollLeft <= 10;
     const atEnd = carousel.scrollLeft >= carousel.scrollWidth - carousel.clientWidth - 0.5;
 
     leftButton.style.display = atStart ? 'none' : 'block';
