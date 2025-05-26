@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Autonomous Drone</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo"><a href="index.html">Tollak Sund</a></div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="#">Projects</a>
+          <ul class="dropdown-menu">
+            <li><a href="project1.html">Project 1</a></li>
+            <li><a href="autonomous_drone.html">Autonomous Drone</a></li>
+            <li><a href="urchin_remover.html">Urchin Remover</a></li>
+          </ul>
+        </li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="project-page">
+    <section class="intro">
+      <h1>Autonomous Drone</h1>
+      <p>This project involved building and programming an autonomous drone capable of flight, ArUco marker detection, and onboard camera stabilization.</p>
+    </section>
+
+    <section class="video-section">
+      <h2>Flight Demonstration</h2>
+      <video controls width="100%">
+        <source src="videos/flight_demo.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </section>
+
+    <section class="video-section">
+      <h2>ArUco Marker Detection</h2>
+      <video controls width="100%">
+        <source src="videos/aruco_detection.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </section>
+
+    <section class="video-section">
+      <h2>Camera Stabilization</h2>
+      <video controls width="100%">
+        <source src="videos/camera_stabilization.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Tollak Sund. All rights reserved.</p>
+  </footer>
+</body>
+</html>
