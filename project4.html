@@ -3,63 +3,116 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Autonomous Drone</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Autonomous Drone – Tollak Sund</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f4f4f4;
+    }
+
+    header {
+      background-color: #007acc;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    nav {
+      background: white;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #007acc;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      background: white;
+      border-top: 1px solid #ddd;
+    }
+
+    section h2 {
+      color: #007acc;
+      margin-top: 0;
+    }
+
+    section video {
+      width: 100%;
+      max-height: 500px;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #eee;
+      margin-top: 4rem;
+    }
+  </style>
 </head>
 <body>
-  <!-- Navigation Bar -->
   <header>
-    <nav class="navbar">
-      <div class="logo"><a href="index.html">Tollak Sund</a></div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li class="dropdown">
-          <a href="#">Projects</a>
-          <ul class="dropdown-menu">
-            <li><a href="project1.html">Project 1</a></li>
-            <li><a href="project2.html">Project 2</a></li>
-            <li><a href="project4.html">Autonomous Drone</a></li>
-            <li><a href="project5.html">Urchin Remover</a></li>
-          </ul>
-        </li>
-        <li><a href="about.html">About</a></li>
-      </ul>
-    </nav>
+    <h1>Autonomous Drone</h1>
+    <p>A drone designed for autonomous indoor navigation, marker detection, and camera stabilization.</p>
   </header>
 
-  <main class="project-page">
-    <section class="intro">
-      <h1>Autonomous Drone</h1>
-      <p>This project involved building and programming an autonomous drone capable of indoor navigation, ArUco marker detection, and camera stabilization. Below are demonstration videos of its key capabilities.</p>
-    </section>
+  <nav>
+    <a href="index.html#home">Home</a>
+    <a href="index.html#projects">Projects</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
 
-    <section class="video-section">
-      <h2>Flight Demonstration</h2>
-      <video controls width="100%">
-        <source src="videos/flight_demo.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </section>
+  <section>
+    <h2>Flight Demonstration</h2>
+    <p>This video shows the drone executing autonomous flight using sensor-based navigation in an indoor environment.</p>
+    <video controls>
+      <source src="videos/flight_demo.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </section>
 
-    <section class="video-section">
-      <h2>ArUco Marker Detection</h2>
-      <video controls width="100%">
-        <source src="videos/aruco_detection.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </section>
+  <section>
+    <h2>ArUco Marker Detection</h2>
+    <p>The onboard camera detects and tracks ArUco markers to support positioning and interaction with the environment.</p>
+    <video controls>
+      <source src="videos/aruco_detection.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </section>
 
-    <section class="video-section">
-      <h2>Camera Stabilization</h2>
-      <video controls width="100%">
-        <source src="videos/camera_stabilization.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </section>
-  </main>
+  <section>
+    <h2>Camera Stabilization</h2>
+    <p>Demonstrates the real-time stabilization of the camera feed while the drone is in motion, ensuring smooth footage.</p>
+    <video controls>
+      <source src="videos/camera_stabilization.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </section>
 
   <footer>
-    <p>&copy; 2025 Tollak Sund. All rights reserved.</p>
+    &copy; 2025 Tollak Sund — All rights reserved.
   </footer>
 </body>
 </html>
+
