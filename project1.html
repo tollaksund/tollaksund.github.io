@@ -112,6 +112,38 @@
   </section>
 
   <section>
+    <h2>System Architecture</h2>
+    <p>
+      The robot operates using a structured navigation system divided into three stages: locating the item, grabbing it, and delivering it to the packing bay. Each stage includes substages and is supported by a finite state machine that ensures smooth transitions and recovery if a task fails. The robot uses a model-based reflex agent to make decisions based on both current and past sensor input.
+    </p>
+  </section>
+
+  <section>
+    <h2>Navigation and Obstacle Avoidance</h2>
+    <p>
+      The navigation system converts sensor inputs into motor outputs, enabling the robot to move, rotate, and avoid obstacles in real-time. It integrates with the vision system to activate only necessary sensors, optimizing performance on the Raspberry Pi. A dual strategy combining <strong>potential fields</strong> and <strong>Bug 2 algorithms</strong> allows the robot to maintain a smooth trajectory toward the target while dynamically avoiding obstacles.
+    </p>
+    <ul>
+      <li><strong>Potential Fields:</strong> Smooth, intuitive navigation toward targets with obstacles treated as repelling forces.</li>
+      <li><strong>Bug 2 Algorithm:</strong> Boundary-following strategy to navigate around obstacles when encountered at close range.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Operational Stages</h2>
+    <p><strong>Stage 1 – Item Location:</strong> The robot scans for row markers using the packing bay as a reference. It avoids blind zones and stabilizes between shelves for accurate vision input.</p>
+    <p><strong>Stage 2 – Item Pickup:</strong> The robot raises the grabber, aligns with the item, and picks it up using focused visual input.</p>
+    <p><strong>Stage 3 – Delivery:</strong> The robot drives to the packing bay while avoiding obstacles and releases the item, then resets for the next cycle.</p>
+  </section>
+
+  <section>
+    <h2>Performance and Validation</h2>
+    <p>
+      During tests, the robot demonstrated successful autonomous behavior, consistently retrieving and delivering items. The integration of mobility and vision systems allowed for robust obstacle avoidance and precise navigation. In real-world trials, the robot achieved a success rate of approximately 75%, with minor inconsistencies attributed to lighting, traction, and battery variation.
+    </p>
+  </section>
+
+  <section>
     <h2>Reflection</h2>
     <p>
       This project helped develop skills in embedded programming, sensor integration, and mechanical design. It also emphasized the importance of robust testing and iterative development.
