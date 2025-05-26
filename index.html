@@ -2,117 +2,342 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Autonomous Drone – Tollak Sund</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tollak Sund</title>
   <style>
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
       font-family: 'Segoe UI', sans-serif;
-      line-height: 1.6;
       color: #333;
-      background: #f4f4f4;
     }
 
-    header {
-      background-color: #007acc;
-      color: white;
-      padding: 2rem;
-      text-align: center;
+    .background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -2;
+      pointer-events: none;
     }
 
-    nav {
-      background: white;
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
+      z-index: -1;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.9);
       display: flex;
       justify-content: center;
       gap: 2rem;
       padding: 1rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
       z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
-    nav a {
+    .navbar a {
       text-decoration: none;
       color: #333;
       font-weight: bold;
     }
 
-    nav a:hover {
-      color: #007acc;
+    .navbar a:hover {
+      color: #0077cc;
+    }
+
+    .hero {
+      height: 95vh;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8);
+      text-align: center;
+      padding: 0 20px;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 3em;
+      position: relative;
+      z-index: 1;
     }
 
     section {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 4rem 2rem;
-      background: white;
-      border-top: 1px solid #ddd;
+      padding: 100px 20px;
+      text-align: center;
+      min-height: 100vh;
+      background-color: white;
+    }
+    section:nth-of-type(even) {
+      background-color: #f7f7f7;
     }
 
     section h2 {
-      color: #007acc;
-      margin-top: 0;
+      margin-bottom: 20px;
+      font-size: 2em;
     }
 
-    section video {
+    section p {
+      max-width: 700px;
+      margin: auto;
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+
+    .spacer {
+      height: 60px;
+    }
+
+    .carousel-wrapper {
+      position: relative;
+      max-width: 100%;
+      overflow: hidden;
+      margin-top: 40px;
+    }
+
+    .project-carousel {
+      display: flex;
+      gap: 2rem;
+      padding: 1rem 1rem 1rem 6rem;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .project-carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .project-card {
+      flex: 0 0 300px;
+      scroll-snap-align: start;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      overflow: hidden;
+      text-decoration: none;
+      color: #333;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .project-card img {
       width: 100%;
-      max-height: 500px;
-      border-radius: 8px;
-      margin-top: 1rem;
+      height: 180px;
+      object-fit: cover;
+      display: block;
     }
 
-    footer {
-      text-align: center;
-      padding: 2rem;
+    .project-card .text {
+      padding: 15px;
+    }
+
+    .project-card .text h3 {
+      margin: 0 0 10px;
+      font-size: 1.2em;
+    }
+
+    .project-card .text p {
+      margin: 0;
+      font-size: 0.95em;
+    }
+
+    .scroll-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 1.2em;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .scroll-button:hover {
       background: #eee;
-      margin-top: 4rem;
+    }
+
+    .scroll-left {
+      left: 10px;
+    }
+
+    .scroll-right {
+      right: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .scroll-button {
+        display: none;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Autonomous Drone</h1>
-    <p>Developed as part of my studies in mechanical engineering at NTNU and QUT, with a specialisation in mechatronics. This drone showcases autonomous indoor navigation, marker detection, and real-time camera stabilization.</p>
-  </header>
 
-  <nav>
-    <a href="index.html#home">Home</a>
-    <a href="index.html#about">About</a>
-    <a href="index.html#projects">Projects</a>
-    <a href="index.html#contact">Contact</a>
-  </nav>
+  <!-- Background video -->
+  <video autoplay muted loop playsinline class="background-video">
+    <source src="Robot_2.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
-  <section>
-    <h2>Flight Demonstration</h2>
-    <p>This video shows the drone executing autonomous flight using sensor-based navigation in an indoor environment.</p>
-    <video controls>
-      <source src="videos/flight_demo.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
+  <!-- Navbar -->
+  <div class="navbar">
+    <a href="#home">Home</a>
+    <a href="#projects">Projects</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <!-- Hero section -->
+  <div id="home" class="hero">
+    <div class="overlay"></div>
+    <h1>Welcome to Tollak Sund’s Website</h1>
+  </div>
+
+  <div class="spacer"></div>
+
+  <!-- About Section (Moved Up) -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I'm a Mechanical Engineering student at the Norwegian University of Science and Technology (NTNU), 
+      specializing in Mechatronics. My academic journey has given me hands-on experience in robotics, 
+      automation, and mechanical design. I also completed an exchange year at Queensland University of 
+      Technology (QUT) in Brisbane, Australia, where I further deepened my interest in intelligent systems 
+      and interdisciplinary engineering projects.
+      <br><br>
+      This website is a showcase of the projects I’ve built, the skills I’ve developed, and my passion for 
+      solving real-world problems through technology and design.
+    </p>
   </section>
 
-  <section>
-    <h2>ArUco Marker Detection</h2>
-    <p>The onboard camera detects and tracks ArUco markers to support positioning and interaction with the environment.</p>
-    <video controls>
-      <source src="videos/aruco_detection.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <p>Explore some of the projects I’ve worked on below:</p>
+
+    <div class="carousel-wrapper">
+      <button class="scroll-button scroll-left" onclick="scrollCarousel(-1)">←</button>
+      <div class="project-carousel" id="projectCarousel">
+
+        <a class="project-card" href="project4.html">
+          <img src="DroneCover.JPG" alt="Autonomous Drone">
+          <div class="text">
+            <h3>Autonomous Drone</h3>
+            <p>A drone designed for autonomous indoor navigation using visual markers and sensors.</p>
+          </div>
+        </a>
+
+        <a class="project-card" href="project1.html">
+          <img src="VarehusRobot_cover.jpg" alt="Autonomous Warehouse Robot">
+          <div class="text">
+            <h3>Autonomous Warehouse Robot</h3>
+            <p>A robot that uses sensors and actuators to navigate a dynamic warehouse environment.</p>
+          </div>
+        </a>
+
+        <a class="project-card" href="project2.html">
+          <img src="linjeRobot.jpg" alt="Line-Following Robot">
+          <div class="text">
+            <h3>Line-Following Robot</h3>
+            <p>A robot that follows a line using IR sensors and PID control for precise movement.</p>
+          </div>
+        </a>
+
+        <a class="project-card" href="project5.html">
+          <img src="urchinator.jpg" alt="Urchin Remover">
+          <div class="text">
+            <h3>Urchin Remover</h3>
+            <p>A mechatronic system that targets invasive sea urchins to restore marine ecosystems.</p>
+          </div>
+        </a>
+
+      </div>
+      <button class="scroll-button scroll-right" onclick="scrollCarousel(1)">→</button>
+    </div>
   </section>
 
-  <section>
-    <h2>Camera Stabilization</h2>
-    <p>Demonstrates the real-time stabilization of the camera feed while the drone is in motion, ensuring smooth footage.</p>
-    <video controls>
-      <source src="videos/camera_stabilization.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>
+      📧 <strong>Email:</strong> <a href="mailto:tollak.sund@andeby.no">tollak.sund@andeby.no</a><br>
+      📱 <strong>Phone:</strong> +47 475 20 330<br><br>
+      You can also connect with me on LinkedIn or reach out via a contact form (coming soon).
+    </p>
   </section>
 
-  <footer>
-    &copy; 2025 Tollak Sund — All rights reserved.
-  </footer>
+  <!-- JavaScript -->
+  <script>
+    function scrollCarousel(direction) {
+      const carousel = document.getElementById('projectCarousel');
+      const scrollAmount = 320;
+      carousel.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+    }
+
+    function updateScrollButtons() {
+      const carousel = document.getElementById('projectCarousel');
+      const leftButton = document.querySelector('.scroll-left');
+      const rightButton = document.querySelector('.scroll-right');
+
+      const atStart = carousel.scrollLeft <= 20;
+      const atEnd = carousel.scrollLeft >= carousel.scrollWidth - carousel.clientWidth - 0.5;
+
+      leftButton.style.display = atStart ? 'none' : 'block';
+      rightButton.style.display = atEnd ? 'none' : 'block';
+    }
+
+    window.addEventListener('load', () => {
+      const carousel = document.getElementById('projectCarousel');
+      const firstCard = carousel.querySelector('.project-card');
+
+      if (firstCard) {
+        const cardRect = firstCard.getBoundingClientRect();
+        const carouselRect = carousel.getBoundingClientRect();
+        const scrollOffset = cardRect.left - carouselRect.left - (window.innerWidth / 2 - cardRect.width / 2);
+        carousel.scrollLeft += scrollOffset;
+      }
+
+      setTimeout(updateScrollButtons, 150);
+    });
+
+    window.addEventListener('resize', updateScrollButtons);
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const carousel = document.getElementById('projectCarousel');
+      carousel.addEventListener('scroll', updateScrollButtons);
+    });
+  </script>
+
 </body>
 </html>
-
