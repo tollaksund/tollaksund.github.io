@@ -90,63 +90,64 @@
     <img src="VarehusRobot_cover.jpg" alt="Warehouse Robot Cover">
     <p>
       This robot was developed to autonomously navigate a warehouse, detect obstacles, and deliver items.
-      Using a combination of ultrasonic sensors, wheel encoders, and line-following techniques, it can operate efficiently in structured environments.
+      It uses angle-based navigation derived from fixed landmarks (such as packing bays and shelves), paired with a finite state machine and real-time sensor input processed by a model-based reflex agent.
     </p>
   </section>
 
   <section>
     <h2>Design Process</h2>
     <p>
-      The chassis was designed in Fusion 360 and 3D-printed. The electronics were prototyped using an Arduino-based system, and the robot was tested in multiple indoor setups.
+      The chassis was designed in Fusion 360 and 3D-printed. The electronics were prototyped using an Arduino-based system, and the robot was tested in multiple indoor setups. The robot logic was implemented on a Raspberry Pi running a modular navigation system.
     </p>
   </section>
 
   <section>
     <h2>Key Features</h2>
     <ul>
-      <li>Obstacle detection and avoidance</li>
-      <li>Line-following navigation</li>
-      <li>Delivery compartment with servo control</li>
-      <li>Modular and maintainable chassis design</li>
+      <li>Model-based reflex navigation system</li>
+      <li>Vision-based item detection and alignment</li>
+      <li>Obstacle avoidance using Bug 2 and potential fields</li>
+      <li>Servo-controlled item collection and delivery</li>
+      <li>Modular and maintainable chassis and code architecture</li>
     </ul>
   </section>
 
   <section>
     <h2>System Architecture</h2>
     <p>
-      The robot operates using a structured navigation system divided into three stages: locating the item, grabbing it, and delivering it to the packing bay. Each stage includes substages and is supported by a finite state machine that ensures smooth transitions and recovery if a task fails. The robot uses a model-based reflex agent to make decisions based on both current and past sensor input.
+      The robot operates using a structured navigation system divided into three stages: locating the item, grabbing it, and delivering it to the packing bay. Each stage includes substages and is supported by a finite state machine that ensures smooth transitions and recovery if a task fails. The robot uses a model-based reflex agent to make decisions based on both current and past sensor input, improving reliability in real-time operation.
     </p>
   </section>
 
   <section>
     <h2>Navigation and Obstacle Avoidance</h2>
     <p>
-      The navigation system converts sensor inputs into motor outputs, enabling the robot to move, rotate, and avoid obstacles in real-time. It integrates with the vision system to activate only necessary sensors, optimizing performance on the Raspberry Pi. A dual strategy combining <strong>potential fields</strong> and <strong>Bug 2 algorithms</strong> allows the robot to maintain a smooth trajectory toward the target while dynamically avoiding obstacles.
+      The navigation system converts sensor inputs into motor commands, enabling the robot to turn, drive straight, or correct its path. A dual strategy combining <strong>potential fields</strong> and <strong>Bug 2 algorithms</strong> allows the robot to maintain a smooth trajectory while dynamically avoiding obstacles.
     </p>
     <ul>
-      <li><strong>Potential Fields:</strong> Smooth, intuitive navigation toward targets with obstacles treated as repelling forces.</li>
-      <li><strong>Bug 2 Algorithm:</strong> Boundary-following strategy to navigate around obstacles when encountered at close range.</li>
+      <li><strong>Potential Fields:</strong> Obstacles act as repelling forces, while the target attracts, creating a smooth vector-based path.</li>
+      <li><strong>Bug 2 Algorithm:</strong> When a close obstacle is detected, the robot follows its boundary until a direct path to the goal becomes clear.</li>
     </ul>
   </section>
 
   <section>
     <h2>Operational Stages</h2>
-    <p><strong>Stage 1 – Item Location:</strong> The robot scans for row markers using the packing bay as a reference. It avoids blind zones and stabilizes between shelves for accurate vision input.</p>
-    <p><strong>Stage 2 – Item Pickup:</strong> The robot raises the grabber, aligns with the item, and picks it up using focused visual input.</p>
-    <p><strong>Stage 3 – Delivery:</strong> The robot drives to the packing bay while avoiding obstacles and releases the item, then resets for the next cycle.</p>
+    <p><strong>Stage 1 – Item Location:</strong> The robot scans for the packing bay and row markers. It avoids blind zones and aligns using shelf angles to reach a stable scanning zone.</p>
+    <p><strong>Stage 2 – Item Pickup:</strong> It raises the grabber, aligns with the detected item, and drives forward to activate the pick-up mechanism.</p>
+    <p><strong>Stage 3 – Delivery:</strong> The robot navigates back toward the packing bay using shelf alignment and vision input. Upon arrival, it drops the item and resets the FSM.</p>
   </section>
 
   <section>
     <h2>Performance and Validation</h2>
     <p>
-      During tests, the robot demonstrated successful autonomous behavior, consistently retrieving and delivering items. The integration of mobility and vision systems allowed for robust obstacle avoidance and precise navigation. In real-world trials, the robot achieved a success rate of approximately 75%, with minor inconsistencies attributed to lighting, traction, and battery variation.
+      During real-world tests, the robot successfully retrieved and delivered items with a success rate of approximately 75%. It demonstrated robust integration between navigation, obstacle avoidance, and vision systems. Variability in lighting, battery level, and floor traction occasionally impacted reliability but did not prevent task completion.
     </p>
   </section>
 
   <section>
     <h2>Reflection</h2>
     <p>
-      This project helped develop skills in embedded programming, sensor integration, and mechanical design. It also emphasized the importance of robust testing and iterative development.
+      This project helped develop skills in embedded programming, sensor integration, and mechanical design. It also emphasized the importance of structured architecture, real-time decision-making, and robust testing. The model-based reflex agent combined with finite state logic proved effective in coordinating complex autonomous behavior in a constrained environment.
     </p>
   </section>
 
