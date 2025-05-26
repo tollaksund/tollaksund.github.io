@@ -122,16 +122,19 @@
   <section>
     <h2>Navigation and Obstacle Avoidance</h2>
     <p>
-      The navigation system converts sensor inputs into motor commands, enabling the robot to turn, drive straight, or correct its path. <strong>Bug 2 algorithms</strong> is used as obsticle avoidance, which allows the robot to maintain a smooth trajectory while dynamically avoiding obstacles. When a close obstacle is detected, the robot follows its boundary until a direct path to the goal becomes clear.
+      The navigation system converts sensor inputs into motor commands, enabling the robot to turn, drive straight, or correct its path. A hybrid method is used: <strong>potential fields</strong> for smooth long-range movement, and <strong>Bug 2</strong> for close-range obstacle avoidance. This allows the robot to maintain a smooth trajectory while dynamically responding to its environment.
     </p>
     <ul>
-      <li><strong>Bug 2 Algorithm:</strong> </li>
+      <li><strong>Bug 2 Algorithm:</strong> Follows the edge of an obstacle until a clear path to the goal is found, ensuring reliable obstacle circumvention.</li>
+      <li><strong>Potential Fields:</strong> Obstacles act as repelling forces and the goal as an attractor, resulting in fluid motion toward the target.</li>
     </ul>
   
-    <video controls>
-      <source src="Warehouse.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
+    <div class="video-container">
+      <video controls>
+        <source src="Warehouse.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
   </section>
 
   <section>
