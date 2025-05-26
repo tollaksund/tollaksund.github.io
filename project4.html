@@ -55,7 +55,7 @@
       margin-top: 0;
     }
 
-    section video {
+    section video, section img {
       width: 100%;
       max-height: 500px;
       border-radius: 8px;
@@ -85,18 +85,15 @@
 
   <section>
     <h2>Flight Demonstration</h2>
-    <p>This video shows the drone executing autonomous flight using sensor-based navigation in an indoor environment.</p>
-    <video controls>
-      <source src="DroneFlight.mov" type="mov" />
-      Your browser does not support the video tag.
-    </video>
+    <p>This image shows the drone during an autonomous indoor navigation test.</p>
+    <img src="images/drone_flight_demo.jpg" alt="Drone flight demonstration">
   </section>
 
   <section>
     <h2>ArUco Marker Detection</h2>
     <p>The onboard camera detects and tracks ArUco markers to support positioning and interaction with the environment.</p>
     <video controls>
-      <source src="DroneFlight.mov" type="mov" />
+      <source src="DroneFlight.mov" type="video/mov" />
       Your browser does not support the video tag.
     </video>
   </section>
@@ -115,4 +112,3 @@
   </footer>
 </body>
 </html>
-
