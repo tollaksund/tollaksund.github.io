@@ -1,112 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Urchin Remover – Tollak Sund</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background: #f4f4f4;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Urchin Remover – Tollak Sund</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Setup Inter Font and overall dark theme aesthetics */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        :root {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
 
-    header {
-      background-color: #007acc;
-      color: white;
-      padding: 2rem;
-      text-align: center;
-    }
+        /* Dark mode background for the entire page */
+        body {
+            background-color: #0d1117; /* GitHub dark theme background */
+            color: #c9d1d9; /* Light grey text */
+        }
 
-    nav {
-      background: white;
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      padding: 1rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      color: #007acc;
-    }
-
-    section {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 4rem 2rem;
-      background: white;
-      border-top: 1px solid #ddd;
-    }
-
-    section h2 {
-      color: #007acc;
-      margin-top: 0;
-    }
-
-    section img, section video {
-      width: 100%;
-      max-height: 500px;
-      border-radius: 8px;
-      margin-top: 1rem;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background: #eee;
-      margin-top: 4rem;
-    }
-  </style>
+        /* Custom glow effect, updated to match the yellow/orange glow of the project pages */
+        .project-card {
+            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.15), 0 0 5px rgba(76, 175, 80, 0.1);
+        }
+    </style>
 </head>
-<body>
-  <header>
-    <h1>Urchin Remover</h1>
-    <p>A mechatronic system designed to reduce sea urchin overpopulation and support marine ecosystem restoration.</p>
-  </header>
+<body class="selection:bg-green-600 selection:text-white">
 
-  <nav>
-    <a href="index.html#home">Home</a>
-    <a href="index.html#projects">Projects</a>
-    <a href="index.html#about">About</a>
-    <a href="index.html#contact">Contact</a>
-  </nav>
+    <!-- Header Section (Project Title) -->
+    <header class="bg-[#161b22] p-10 text-center border-b border-gray-700">
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white">Urchin Remover</h1>
+        <p class="text-xl text-gray-400 mt-2">A mechatronic system for marine ecosystem restoration.</p>
+    </header>
 
-  <section>
-    <h2>Project Overview</h2>
-    <img src="urchinator.jpg" alt="Urchin Remover Image">
-    <p><strong>Summary:</strong>  
-    This project was developed in collaboration with the environmental foundation Bellona as part of a course in product development. The goal was to create a prototype for a robotic device capable of detecting and safely removing invasive sea urchins from the ocean floor. These urchins are a major threat to kelp forests and marine biodiversity in Norway. The system included mechanical components for gripping and collecting urchins, an underwater-compatible structure, and considerations for sustainable deployment in real-world conditions.
-    </p>
-  </section>
+    <!-- Navigation (Sticky, points back to index) -->
+    <nav class="sticky top-0 w-full bg-[#161b22]/90 backdrop-blur-sm shadow-xl flex justify-center gap-6 p-4 z-50 border-b border-gray-700">
+        <a href="index.html#home" class="text-white font-semibold hover:text-green-400 transition duration-150">Home</a>
+        <a href="index.html#projects" class="text-white font-semibold hover:text-green-400 transition duration-150">Projects</a>
+        <a href="index.html#about" class="text-white font-semibold hover:text-green-400 transition duration-150">About</a>
+        <a href="index.html#contact" class="text-white font-semibold hover:text-green-400 transition duration-150">Contact</a>
+    </nav>
 
-  <section>
-    <h2>Design Process</h2>
-    <p>
-      The design was iteratively developed through CAD modeling, simulation, and 3D printing. Key focus areas included underwater actuation, sensor integration for detection, and modular assembly for ease of maintenance. Emphasis was also placed on environmental safety and non-disruptive removal techniques.
-    </p>
-  </section>
+    <!-- Main Content Area -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
+        <!-- Project Hero and Summary -->
+        <section id="overview" class="mb-12 max-w-4xl mx-auto p-6 bg-[#161b22] rounded-xl border border-gray-700 project-card">
+            <h2 class="text-4xl font-extrabold text-green-400 mb-4 leading-tight flex items-center">
+                <i data-lucide="droplet" class="w-8 h-8 mr-3"></i>
+                Project Overview: Restoring Kelp Forests
+            </h2>
+            
+            <img src="urchinator.jpg" alt="Urchin Remover Image" class="w-full h-auto rounded-lg shadow-xl border border-gray-600 my-6">
 
-  <section>
-    <h2>Outcome and Impact</h2>
-    <p>
-      The prototype demonstrated the feasibility of automated sea urchin removal and highlighted the importance of robotics in sustainable marine resource management. The project helped raise awareness of marine ecosystem restoration and formed the basis for further exploration into scalable deployment strategies.
-    </p>
-  </section>
+            <p class="text-lg text-gray-300 mb-4">
+                This project was developed in collaboration with the environmental foundation **Bellona** as part of a course in product development. The goal was to create a prototype for a robotic device capable of detecting and safely removing **invasive sea urchins** from the ocean floor.
+            </p>
+            <p class="text-gray-300">
+                These urchins are a major threat to kelp forests and marine biodiversity in Norway. The system included mechanical components for gripping and collecting urchins, an underwater-compatible structure, and considerations for sustainable deployment in real-world conditions.
+            </p>
+        </section>
 
-  <footer>
-    &copy; 2025 Tollak Sund — All rights reserved.
-  </footer>
+        <!-- Technical Stack and Key Components -->
+        <section id="technical" class="mt-12 max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-white mb-6 border-b border-gray-700 pb-2 flex items-center">
+                <i data-lucide="settings" class="w-6 h-6 mr-3 text-blue-400"></i>
+                Technical Design and Process
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+
+                <!-- Design Process Card -->
+                <div class="bg-[#161b22] p-6 rounded-lg border border-blue-800/50 hover:border-blue-500/80 transition duration-300">
+                    <i data-lucide="ruler" class="w-6 h-6 text-blue-400 mb-3"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">Iterative Design and CAD</h3>
+                    <p class="text-sm text-gray-400">
+                        The design was iteratively developed through **CAD modeling**, simulation, and **3D printing**. Key focus areas included underwater actuation, sensor integration for detection, and modular assembly for ease of maintenance.
+                    </p>
+                </div>
+
+                <!-- Environmental Focus Card -->
+                <div class="bg-[#161b22] p-6 rounded-lg border border-red-800/50 hover:border-red-500/80 transition duration-300">
+                    <i data-lucide="shield-check" class="w-6 h-6 text-red-400 mb-3"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">Environmental Safety</h3>
+                    <p class="text-sm text-gray-400">
+                        Emphasis was placed on environmental safety, ensuring **non-disruptive removal techniques** and designing the device to be robust against saltwater corrosion and high pressure.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Key Technology Badges -->
+            <div class="mt-8 flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-gray-700 text-gray-200 rounded-full text-xs font-medium">#Mechatronics</span>
+                <span class="px-3 py-1 bg-green-600 text-white rounded-full text-xs font-medium">#MarineRobotics</span>
+                <span class="px-3 py-1 bg-blue-600 text-white rounded-full text-xs font-medium">#3DPrinting</span>
+                <span class="px-3 py-1 bg-yellow-600 text-black rounded-full text-xs font-medium">#ProductDevelopment</span>
+            </div>
+        </section>
+
+
+        <!-- Outcome and Impact -->
+        <section id="impact" class="mt-12 max-w-4xl mx-auto p-6 bg-[#161b22] rounded-xl shadow-2xl border border-gray-700">
+            <h2 class="text-3xl font-bold text-green-400 mb-6 border-b border-gray-700 pb-2 flex items-center">
+                <i data-lucide="heart" class="w-6 h-6 mr-3"></i>
+                Outcome and Impact
+            </h2>
+            
+            <p class="text-lg text-gray-300 mb-4">
+                The prototype successfully demonstrated the **feasibility of automated sea urchin removal** and highlighted the importance of robotics in sustainable marine resource management.
+            </p>
+            <p class="text-gray-300">
+                The project helped raise awareness of marine ecosystem restoration and formed the basis for further exploration into scalable deployment strategies, providing Bellona with a concrete starting point for future R&D efforts.
+            </p>
+        </section>
+
+
+        <!-- Back to projects link -->
+        <a href="index.html#projects" class="inline-flex items-center mt-12 text-green-400 hover:text-green-300 transition duration-150 font-medium max-w-4xl mx-auto block">
+            <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i>
+            Back to All Projects
+        </a>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#161b22] border-t border-gray-700 mt-16 py-6">
+        <div class="max-w-5xl mx-auto px-4 text-center text-sm text-gray-500">
+            &copy; 2025 Tollak Sund — All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+    </script>
 </body>
 </html>
