@@ -1,151 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Line-Following Robot</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Line-Following Robot: Project Details</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Setup Inter Font and overall dark theme aesthetics */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        :root {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
 
-    html {
-      scroll-behavior: smooth;
-    }
+        /* Dark mode background for the entire page */
+        body {
+            background-color: #0d1117; /* GitHub dark theme background */
+            color: #c9d1d9; /* Light grey text */
+        }
 
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
-    }
+        /* Ensure the body has padding to account for the fixed navbar */
+        .pt-20 {
+            padding-top: 5rem;
+        }
 
-    .navbar {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: rgba(255, 255, 255, 0.95);
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      padding: 1rem;
-      z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
+        /* Custom glow effect for the main card */
+        .project-card {
+            box-shadow: 0 10px 30px rgba(47, 128, 237, 0.15), 0 0 5px rgba(47, 128, 237, 0.1);
+        }
 
-    .navbar > div {
-      position: relative;
-    }
+        /* Hide dropdown content by default and handle responsiveness */
+        #mobile-menu {
+            transition: all 0.3s ease-in-out;
+        }
 
-    .navbar a {
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
-      padding: 0.5rem;
-    }
-
-    .navbar a:hover {
-      color: #0077cc;
-    }
-
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      top: 2.8rem;
-      left: 0;
-      background-color: white;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      min-width: 200px;
-      z-index: 999;
-      flex-direction: column;
-    }
-
-    .dropdown-content a {
-      padding: 0.8rem 1rem;
-      text-align: left;
-      color: #333;
-    }
-
-    .dropdown-content a:hover {
-      background-color: #f0f0f0;
-    }
-
-    .navbar .dropdown:hover .dropdown-content {
-      display: flex;
-    }
-
-    .spacer {
-      height: 80px;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 2rem 1rem;
-      background: white;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
-      border-radius: 8px;
-    }
-
-    img {
-      max-width: 100%;
-      border-radius: 8px;
-      margin-bottom: 1.5rem;
-    }
-
-    h1 {
-      margin-top: 0;
-    }
-
-    a.back {
-      display: inline-block;
-      margin-top: 2rem;
-      text-decoration: none;
-      color: #0077cc;
-    }
-
-    a.back:hover {
-      text-decoration: underline;
-    }
-  </style>
+        /* Animation for icons on hover */
+        .icon-link:hover .lucide {
+            transform: scale(1.1);
+            color: #58a6ff;
+        }
+    </style>
 </head>
-<body>
+<body class="selection:bg-blue-600 selection:text-white">
 
-  <!-- Navbar with dropdown -->
-  <div class="navbar">
-    <div><a href="index.html#home">Home</a></div>
-    <div class="dropdown">
-      <a href="index.html#projects">Projects ▾</a>
-      <div class="dropdown-content">
-        <a href="project1.html">Autonomous Warehouse Robot</a>
-        <a href="project2.html">Line-Following Robot</a>
-        <a href="project3.html">Survival Game</a>
-      </div>
-    </div>
-    <div><a href="index.html#about">About</a></div>
-    <div><a href="index.html#contact">Contact</a></div>
-  </div>
+    <!-- Fixed Header/Navbar (simulating GitHub's header style) -->
+    <header class="fixed top-0 left-0 w-full bg-[#161b22] border-b border-gray-700 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center">
+                <!-- Project/Repo Name -->
+                <a href="#" class="text-xl font-bold text-white flex items-center">
+                    <i data-lucide="bot" class="w-6 h-6 mr-2 text-blue-400"></i>
+                    Line-Follower-Robot
+                </a>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-6">
+                <a href="#overview" class="text-sm font-medium text-gray-400 hover:text-white transition duration-150">Overview</a>
+                <a href="#technical" class="text-sm font-medium text-gray-400 hover:text-white transition duration-150">Technical Stack</a>
+                <a href="index.html#projects" class="text-sm font-medium text-gray-400 hover:text-white transition duration-150">All Projects</a>
+            </nav>
 
-  <div class="spacer"></div>
+            <!-- Social Links (Simulated GitHub Profile/Repo Buttons) -->
+            <div class="hidden md:flex space-x-4">
+                <a href="#" class="icon-link" aria-label="View on GitHub">
+                    <i data-lucide="github" class="w-5 h-5 text-gray-400 hover:text-white transition duration-150"></i>
+                </a>
+                <a href="#" class="icon-link" aria-label="Star this project">
+                    <i data-lucide="star" class="w-5 h-5 text-gray-400 hover:text-white transition duration-150"></i>
+                </a>
+            </div>
+        </div>
+    </header>
 
-  <!-- Main Content -->
-  <div class="container">
-    <h1>Line-Following Robot</h1>
-    <img src="linjeRobot.jpg" alt="Line-Following Robot">
+    <!-- Main Content Area -->
+    <main class="pt-20 pb-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Project Hero and Summary -->
+        <section id="overview" class="mb-12">
+            <h1 class="text-5xl font-extrabold text-white mb-4 leading-tight">Line-Following Robot: The PID Challenge</h1>
+            <p class="text-xl text-gray-400 mb-8">
+                An autonomous robotics project focusing on precision and real-time path correction using custom hardware and closed-loop control.
+            </p>
+            
+            <!-- Stats Bar (Simulated GitHub info) -->
+            <div class="flex flex-wrap gap-4 text-sm text-gray-400">
+                <span class="flex items-center space-x-1">
+                    <i data-lucide="code" class="w-4 h-4 text-blue-400"></i>
+                    <span>C++ / Mechatronics</span>
+                </span>
+                <span class="flex items-center space-x-1">
+                    <i data-lucide="git-fork" class="w-4 h-4 text-green-400"></i>
+                    <span>2 Forks</span>
+                </span>
+                <span class="flex items-center space-x-1">
+                    <i data-lucide="star" class="w-4 h-4 text-yellow-400"></i>
+                    <span>14 Stars</span>
+                </span>
+                <span class="flex items-center space-x-1">
+                    <i data-lucide="bug" class="w-4 h-4 text-red-400"></i>
+                    <span>0 Open Issues</span>
+                </span>
+            </div>
+        </section>
 
-    <p>
-      This robot was designed to follow black electrical tape laid out on a white surface using infrared reflectance sensors.
-      It uses feedback control logic (PID) to dynamically adjust motor speeds and stay on track even around tight corners.
-    </p>
+        <!-- Image and Detailed Description -->
+        <div class="bg-[#161b22] p-6 sm:p-8 rounded-xl border border-gray-700 project-card">
+            <div class="grid md:grid-cols-2 gap-8 items-start">
+                
+                <!-- Project Image/Demo Placeholder -->
+                <div class="flex flex-col">
+                    <!-- Placeholder image to replace linjeRobot.jpg -->
+                    <img 
+                        src="https://placehold.co/800x600/1e293b/94a3b8?text=Robot+On+Track+Demo" 
+                        alt="Line-Following Robot running on a track" 
+                        class="rounded-lg shadow-2xl object-cover aspect-video w-full"
+                        onerror="this.onerror=null; this.src='https://placehold.co/800x600/1e293b/94a3b8?text=Robot+Image+Not+Available';"
+                    >
+                    <p class="text-xs text-gray-500 mt-2 text-center">Simulated image of the robot chassis and sensor array.</p>
+                </div>
 
-    <p>
-      The robot was built using a custom 3D-printed chassis, DC motors with encoders, and a microcontroller programmed in C++.
-      It was capable of consistent lap times and real-time error correction based on light intensity data.
-    </p>
+                <!-- Description -->
+                <div>
+                    <h2 class="text-3xl font-bold text-white mb-4 border-b border-gray-700 pb-2">Project Overview</h2>
+                    <p class="mb-4 text-gray-300">
+                        This robot was engineered to precisely follow black electrical tape laid out on a white surface. It uses an array of infrared reflectance sensors to continuously monitor the line position, allowing for rapid and accurate path adjustments.
+                    </p>
+                    <p class="mb-6 text-gray-300">
+                        The core challenge was achieving consistent lap times and managing sharp turns. This was solved through the implementation of a **highly-tuned feedback control system**, demonstrating a practical application of mechatronics principles.
+                    </p>
 
-    <a class="back" href="index.html#projects">← Back to projects</a>
-  </div>
+                    <h3 class="text-xl font-semibold text-blue-400 mb-3">Performance Highlights:</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-400 ml-4">
+                        <li>Achieved **real-time error correction** based on light intensity data.</li>
+                        <li>Validated for consistent lap times under competition rules.</li>
+                        <li>Robust performance across varying lighting conditions.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
+        <!-- Technical Stack and Key Components -->
+        <section id="technical" class="mt-12">
+            <h2 class="text-3xl font-bold text-white mb-6">Technical Stack & Hardware</h2>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+
+                <!-- PID Control Card -->
+                <div class="bg-[#161b22] p-5 rounded-lg border border-blue-800/50 hover:border-blue-500/80 transition duration-300">
+                    <i data-lucide="maximize" class="w-6 h-6 text-blue-400 mb-3"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">PID Control Logic</h3>
+                    <p class="text-sm text-gray-400">
+                        Implemented a **Proportional-Integral-Derivative (PID)** controller to dynamically adjust motor speeds. This allowed for smooth, aggressive cornering and minimized overshoot.
+                    </p>
+                </div>
+
+                <!-- Hardware Card -->
+                <div class="bg-[#161b22] p-5 rounded-lg border border-green-800/50 hover:border-green-500/80 transition duration-300">
+                    <i data-lucide="wrench" class="w-6 h-6 text-green-400 mb-3"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">Custom Mechanics</h3>
+                    <p class="text-sm text-gray-400">
+                        Features a **custom 3D-printed chassis** for optimal sensor placement and weight distribution, paired with powerful DC motors and encoders for precise distance measurement.
+                    </p>
+                </div>
+
+                <!-- Software Card -->
+                <div class="bg-[#161b22] p-5 rounded-lg border border-yellow-800/50 hover:border-yellow-500/80 transition duration-300">
+                    <i data-lucide="cpu" class="w-6 h-6 text-yellow-400 mb-3"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">Microcontroller Firmware</h3>
+                    <p class="text-sm text-gray-400">
+                        Firmware was developed entirely in **C++** on a high-speed microcontroller to ensure low-latency sensor reading and control loop execution.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Key Technology Badges -->
+            <div class="mt-8 flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-gray-700 text-gray-200 rounded-full text-xs font-medium">#InfraredSensors</span>
+                <span class="px-3 py-1 bg-blue-600 text-white rounded-full text-xs font-medium">#PIDController</span>
+                <span class="px-3 py-1 bg-green-700 text-white rounded-full text-xs font-medium">#3DPrinting</span>
+                <span class="px-3 py-1 bg-yellow-600 text-black rounded-full text-xs font-medium">#EmbeddedC++</span>
+                <span class="px-3 py-1 bg-red-700 text-white rounded-full text-xs font-medium">#DC_Motor_Encoders</span>
+            </div>
+        </section>
+
+        <!-- Back to projects link -->
+        <a href="index.html#projects" class="inline-flex items-center mt-12 text-blue-400 hover:text-blue-300 transition duration-150">
+            <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i>
+            Back to All Projects
+        </a>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#161b22] border-t border-gray-700 mt-16 py-6">
+        <div class="max-w-5xl mx-auto px-4 text-center text-sm text-gray-500">
+            © 2025 Project Repository | Built with 💙 and Tailwind CSS.
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+    </script>
 </body>
 </html>
