@@ -6,6 +6,8 @@
     <title>Autonomous Drone – Tollak Sund</title>
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         /* Setup Inter Font and overall dark theme aesthetics */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
@@ -19,13 +21,24 @@
             background-color: #0d1117; /* GitHub dark theme background */
             color: #c9d1d9; /* Light grey text */
         }
+
+        /* Custom aspect ratio utilities */
+        .aspect-w-16 { --tw-aspect-w: 16; }
+        .aspect-h-9 { --tw-aspect-h: 9; }
+        .aspect-video-custom {
+            aspect-ratio: var(--tw-aspect-w) / var(--tw-aspect-h);
+        }
+
+        .project-card {
+            box-shadow: 0 10px 30px rgba(47, 128, 237, 0.15), 0 0 5px rgba(47, 128, 237, 0.1);
+        }
     </style>
 </head>
 <body class="selection:bg-blue-600 selection:text-white">
 
     <!-- Header Section -->
     <header class="bg-[#161b22] p-10 text-center border-b border-gray-700">
-        <h1 class="text-4xl sm:text-5xl font-extrabold text-blue-400">Autonomous Drone</h1>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white">Autonomous Drone</h1>
         <p class="text-xl text-gray-400 mt-2">A drone designed for autonomous indoor navigation, marker detection, and camera stabilization.</p>
     </header>
 
@@ -39,26 +52,72 @@
     </nav>
 
     <!-- Main Content Sections -->
-    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
-        <!-- Flight Demonstration & Summary Section -->
-        <section class="max-w-4xl mx-auto my-8 p-6 md:p-10 bg-[#161b22] rounded-xl shadow-2xl border border-gray-700">
-            <h2 class="text-3xl font-bold text-blue-400 mb-4 border-b border-gray-600 pb-2 inline-block">Flight Demonstration & Overview</h2>
+        <!-- Project Summary Card & Key Image -->
+        <div class="bg-[#161b22] p-6 sm:p-8 rounded-xl border border-gray-700 project-card mb-12">
+            <h2 class="text-3xl font-bold text-white mb-6 border-b border-blue-400/50 pb-2">Project Overview</h2>
             
-            <p class="text-gray-400 mb-4">This image shows the drone during an autonomous indoor navigation test.</p>
-            <img src="DroneCover.JPG" alt="Drone flight demonstration" class="w-full max-h-[500px] object-cover rounded-lg shadow-lg mb-6 border border-gray-600">
-            
-            <p class="text-gray-300 mt-4">
-                <strong>Summary:</strong> This project involves designing and testing an autonomous drone for a simulated search and rescue mission. The drone must autonomously navigate an indoor environment, detect an action figure (representing a missing person), locate their backpack, and deliver simulated payloads. Using onboard sensors and **ArUco marker detection**, the drone must demonstrate **stable flight**, **accurate target localization**, and **efficient path planning**, culminating in an autonomous landing. The system is developed over two semesters and tested in QUT’s motion-capture-equipped indoor arena.
-            </p>
-        </section>
+            <div class="grid md:grid-cols-2 gap-8 items-start">
+                
+                <!-- Project Image -->
+                <div>
+                    <p class="text-gray-400 mb-4">This image shows the drone during an autonomous indoor navigation test.</p>
+                    <img src="DroneCover.JPG" alt="Drone flight demonstration" class="w-full max-h-[500px] object-cover rounded-lg shadow-lg border border-gray-600">
+                </div>
+
+                <!-- Detailed Summary -->
+                <div>
+                    <p class="text-lg font-semibold text-blue-400 mb-3">Mission Summary:</p>
+                    <p class="text-gray-300">
+                        <strong>Summary:</strong> This project involves designing and testing an autonomous drone for a simulated search and rescue mission. The drone must autonomously navigate an indoor environment, detect an action figure (representing a missing person), locate their backpack, and deliver simulated payloads. Using onboard sensors and <strong>ArUco marker detection</strong>, the drone must demonstrate <strong>stable flight</strong>, <strong>accurate target localization</strong>, and <strong>efficient path planning</strong>, culminating in an autonomous landing. The system is developed over two semesters and tested in QUT’s motion-capture-equipped indoor arena.
+                    </p>
+                </div>
+            </div>
+        </div>
         
-        <!-- Flight Test Section -->
-        <section class="max-w-4xl mx-auto my-8 p-6 md:p-10 bg-[#161b22] rounded-xl shadow-2xl border border-gray-700">
-            <h2 class="text-3xl font-bold text-blue-400 mb-4 border-b border-gray-600 pb-2 inline-block">Live Flight Test</h2>
+        <!-- Technical Highlights Dashboard -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-white mb-6">Technical Highlights</h2>
             
-            <p class="text-gray-400 mb-4">Video of the live demonstration.</p>
-            <div class="aspect-w-16 aspect-h-9 w-full rounded-xl shadow-xl overflow-hidden">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <!-- Highlight 1: Control & Stabilization -->
+                <div class="bg-[#161b22] p-5 rounded-lg border border-blue-800/50 hover:border-blue-500/80 transition duration-300">
+                    <i data-lucide="gyroscope" class="w-6 h-6 text-blue-400 mb-3"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">Control System</h3>
+                    <p class="text-sm text-gray-400">Stable flight and camera stabilization in a dynamic indoor environment.</p>
+                </div>
+
+                <!-- Highlight 2: Vision System -->
+                <div class="bg-[#161b22] p-5 rounded-lg border border-green-800/50 hover:border-green-500/80 transition duration-300">
+                    <i data-lucide="eye" class="w-6 h-6 text-green-400 mb-3"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">Visual Sensing</h3>
+                    <p class="text-sm text-gray-400">Utilized <strong>OAK-D camera</strong> for depth sensing and object recognition.</p>
+                </div>
+
+                <!-- Highlight 3: Localization -->
+                <div class="bg-[#161b22] p-5 rounded-lg border border-yellow-800/50 hover:border-yellow-500/80 transition duration-300">
+                    <i data-lucide="scan" class="w-6 h-6 text-yellow-400 mb-3"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">Localization</h3>
+                    <p class="text-sm text-gray-400">High-accuracy target localization using <strong>ArUco marker detection</strong>.</p>
+                </div>
+
+                <!-- Highlight 4: Software Framework -->
+                <div class="bg-[#161b22] p-5 rounded-lg border border-red-800/50 hover:border-red-500/80 transition duration-300">
+                    <i data-lucide="rocket" class="w-6 h-6 text-red-400 mb-3"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">Software Stack</h3>
+                    <p class="text-sm text-gray-400">System integrated and managed using the <strong>ROS (Robot Operating System)</strong> framework.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Flight Test Section -->
+        <section class="max-w-4xl mx-auto my-8 p-6 md:p-10 bg-[#161b22] rounded-xl shadow-2xl border border-gray-700">
+            <h2 class="text-3xl font-bold text-blue-400 mb-4 border-b border-gray-600 pb-2 inline-block">Flight Demonstration</h2>
+            
+            <p class="text-gray-400 mb-4">Video of the live demonstration showcasing autonomous navigation.</p>
+            <div class="aspect-w-16 aspect-h-9 aspect-video-custom w-full rounded-xl shadow-xl overflow-hidden">
                 <video controls class="w-full h-full object-cover">
                     <source src="Dr_flight.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
@@ -70,10 +129,10 @@
 
         <!-- Aruco Detection Section -->
         <section class="max-w-4xl mx-auto my-8 p-6 md:p-10 bg-[#161b22] rounded-xl shadow-2xl border border-gray-700">
-            <h2 class="text-3xl font-bold text-blue-400 mb-4 border-b border-gray-600 pb-2 inline-block">ArUco Marker Detection</h2>
+            <h2 class="text-3xl font-bold text-blue-400 mb-4 border-b border-gray-600 pb-2 inline-block">ArUco Marker Detection & Vision</h2>
             
-            <p class="text-gray-400 mb-4">Demonstrates the real-time detection of ArUco markers on the drone.</p>
-            <div class="aspect-w-16 aspect-h-9 w-full rounded-xl shadow-xl overflow-hidden">
+            <p class="text-gray-400 mb-4">Demonstrates the real-time detection of ArUco markers, critical for high-precision landing and localization.</p>
+            <div class="aspect-w-16 aspect-h-9 aspect-video-custom w-full rounded-xl shadow-xl overflow-hidden">
                 <video controls class="w-full h-full object-cover">
                     <source src="Aruco_detection.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
@@ -81,9 +140,15 @@
             </div>
             
             <p class="text-gray-300 mt-4">
-                **ArUco markers** are black-and-white square patterns that encode unique IDs, enabling the drone to recognize specific locations in the environment. The onboard camera captures these markers, and computer vision algorithms estimate the position and orientation of each marker relative to the drone. This information is used for tasks like autonomous landing, navigation, and mission execution. Marker detection is performed in real-time using the **OAK-D camera** and processed through **ROS** for immediate feedback and control.
+                <strong>ArUco markers</strong> are black-and-white square patterns that encode unique IDs, enabling the drone to recognize specific locations in the environment. The onboard camera captures these markers, and computer vision algorithms estimate the position and orientation of each marker relative to the drone. This information is used for tasks like autonomous landing, navigation, and mission execution. Marker detection is performed in real-time using the <strong>OAK-D camera</strong> and processed through <strong>ROS</strong> for immediate feedback and control.
             </p>
         </section>
+        
+        <!-- Back to projects link -->
+        <a href="index.html#projects" class="inline-flex items-center mt-8 text-blue-400 hover:text-blue-300 transition duration-150 font-medium">
+            <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i>
+            Back to All Projects
+        </a>
 
     </main>
 
@@ -93,5 +158,10 @@
             &copy; 2025 Tollak Sund — All rights reserved.
         </div>
     </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+    </script>
 </body>
 </html>
