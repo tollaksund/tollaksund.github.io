@@ -98,7 +98,8 @@
         <section id="projects" class="py-12">
             <div class="text-center mb-8">
                 <h2 class="text-3xl font-bold text-white mb-3 border-b border-blue-400/50 pb-3 inline-block">Featured Projects</h2>
-                <p class="text-gray-400 max-w-xl mx-auto">A selection of my work in robotics, control systems, and mechanical design.</p>
+                <!-- Improved contrast and size of the description text -->
+                <p class="text-gray-300 max-w-2xl mx-auto text-lg">A selection of my work in robotics, control systems, and mechanical design.</p>
             </div>
 
             <div class="carousel-wrapper relative py-4">
@@ -154,29 +155,41 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
+        <!-- Contact Section - Updated to include details under icons -->
         <section id="contact" class="bg-[#161b22] p-8 md:p-12 rounded-xl shadow-2xl border border-gray-700 mt-12 mb-12 text-center">
             <h2 class="text-3xl font-bold text-white mb-6 border-b border-blue-400/50 pb-3 inline-block">Get In Touch</h2>
-            <p class="mb-8 text-gray-300">
+            <p class="mb-10 text-gray-300">
                 I'm always interested in discussing new projects, roles, and engineering challenges. Feel free to connect!
             </p>
             
-            <div class="flex flex-col sm:flex-row justify-center gap-6 sm:gap-10 text-xl">
+            <div class="flex flex-col sm:flex-row justify-center gap-10 sm:gap-16">
+                
                 <!-- Email -->
-                <a href="mailto:tollak.sund@andeby.no" class="flex items-center text-blue-400 hover:text-blue-300 transition duration-200 group">
-                    <i data-lucide="mail" class="w-6 h-6 mr-3 group-hover:scale-110 transition duration-150"></i>
-                    <span class="font-medium">Email</span>
-                </a>
+                <div class="flex flex-col items-center">
+                    <a href="mailto:tollak.sund@andeby.no" class="flex flex-col items-center text-blue-400 hover:text-blue-300 transition duration-200 group mb-2">
+                        <i data-lucide="mail" class="w-8 h-8 group-hover:scale-110 transition duration-150 mb-1"></i>
+                        <span class="font-medium text-lg">Email</span>
+                    </a>
+                    <span class="text-sm text-gray-400 font-mono">tollak.sund@andeby.no</span>
+                </div>
+
                 <!-- Phone -->
-                <a href="tel:+4747520330" class="flex items-center text-green-400 hover:text-green-300 transition duration-200 group">
-                    <i data-lucide="phone" class="w-6 h-6 mr-3 group-hover:scale-110 transition duration-150"></i>
-                    <span class="font-medium">Phone</span>
-                </a>
+                <div class="flex flex-col items-center">
+                    <a href="tel:+4747520330" class="flex flex-col items-center text-green-400 hover:text-green-300 transition duration-200 group mb-2">
+                        <i data-lucide="phone" class="w-8 h-8 group-hover:scale-110 transition duration-150 mb-1"></i>
+                        <span class="font-medium text-lg">Phone</span>
+                    </a>
+                    <span class="text-sm text-gray-400 font-mono">+47 475 20 330</span>
+                </div>
+
                 <!-- LinkedIn -->
-                <a href="https://www.linkedin.com/in/tollak-sund" target="_blank" rel="noopener noreferrer" class="flex items-center text-indigo-400 hover:text-indigo-300 transition duration-200 group">
-                    <i data-lucide="linkedin" class="w-6 h-6 mr-3 group-hover:scale-110 transition duration-150"></i>
-                    <span class="font-medium">LinkedIn</span>
-                </a>
+                <div class="flex flex-col items-center">
+                    <a href="https://www.linkedin.com/in/tollak-sund" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center text-indigo-400 hover:text-indigo-300 transition duration-200 group mb-2">
+                        <i data-lucide="linkedin" class="w-8 h-8 group-hover:scale-110 transition duration-150 mb-1"></i>
+                        <span class="font-medium text-lg">LinkedIn</span>
+                    </a>
+                    <span class="text-sm text-gray-400 font-mono">/in/tollak-sund</span>
+                </div>
             </div>
         </section>
 
