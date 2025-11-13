@@ -6,6 +6,8 @@
     <title>Autonomous Warehouse Robot – Tollak Sund</title>
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         /* Setup Inter Font and overall dark theme aesthetics */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
@@ -19,22 +21,16 @@
             background-color: #0d1117; /* GitHub dark theme background */
             color: #c9d1d9; /* Light grey text */
         }
-        
-        /* Custom video container for 16:9 aspect ratio */
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-            height: 0;
-            overflow: hidden;
-            margin-top: 1.5rem;
+
+        /* Custom aspect ratio utilities */
+        .aspect-w-16 { --tw-aspect-w: 16; }
+        .aspect-h-9 { --tw-aspect-h: 9; }
+        .aspect-video-custom {
+            aspect-ratio: var(--tw-aspect-w) / var(--tw-aspect-h);
         }
-        
-        .video-container video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+
+        .project-card {
+            box-shadow: 0 10px 30px rgba(255, 165, 0, 0.15), 0 0 5px rgba(255, 165, 0, 0.1);
         }
     </style>
 </head>
@@ -42,7 +38,7 @@
 
     <!-- Header Section -->
     <header class="bg-[#161b22] p-10 text-center border-b border-gray-700">
-        <h1 class="text-4xl sm:text-5xl font-extrabold text-blue-400">Autonomous Warehouse Robot</h1>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white">Autonomous Warehouse Robot</h1>
         <p class="text-xl text-gray-400 mt-2">A mobile robot designed to navigate and operate in a dynamic warehouse environment.</p>
     </header>
 
@@ -56,61 +52,85 @@
     </nav>
 
     <!-- Main Content Sections -->
-    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
-        <!-- Overview Section -->
-        <section class="max-w-4xl mx-auto my-8 p-6 md:p-10 bg-[#161b22] rounded-xl shadow-2xl border border-gray-700">
-            <h2 class="text-3xl font-bold text-blue-400 mb-4 border-b border-gray-600 pb-2 inline-block">Overview</h2>
+        <!-- Project Summary Card & Key Image -->
+        <div class="bg-[#161b22] p-6 sm:p-8 rounded-xl border border-gray-700 project-card mb-12">
+            <h2 class="text-3xl font-bold text-white mb-6 border-b border-yellow-400/50 pb-2">Project Overview</h2>
             
-            <img src="VarehusRobot_cover.jpg" alt="Warehouse Robot Cover" class="w-full max-h-[400px] object-cover rounded-lg shadow-lg mb-6 border border-gray-600">
+            <div class="grid md:grid-cols-2 gap-8 items-start">
+                
+                <!-- Project Image -->
+                <div>
+                    <p class="text-gray-400 mb-4">The final physical prototype of the warehouse robot.</p>
+                    <img src="VarehusRobot_cover.jpg" alt="Warehouse Robot Cover" class="w-full max-h-[500px] object-cover rounded-lg shadow-lg border border-gray-600">
+                </div>
+
+                <!-- Detailed Summary -->
+                <div>
+                    <p class="text-lg font-semibold text-yellow-400 mb-3">Goal and Context:</p>
+                    <p class="text-gray-300">
+                        This project was a hands-on exercise in developing a fully **autonomous mobile robot (AMR)** for logistics. The primary goal was to design, build, and program a robot capable of navigating a simulated warehouse, detecting specific items, avoiding dynamic obstacles, and delivering the items to a designated packing bay.
+                    </p>
+                    <p class="text-gray-300 mt-4">
+                        The navigation relies on **angle-based localization** relative to fixed warehouse landmarks, managed by a robust **Finite State Machine (FSM)**. This demonstrated integration of mechanical design, vision systems, and advanced pathfinding algorithms.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Systems Dashboard -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-white mb-6">Key Technical Systems</h2>
             
-            <p class="text-gray-300 mb-4">
-                This robot was developed to autonomously navigate a warehouse, detect obstacles, and deliver items.
-                It uses angle-based navigation derived from fixed landmarks (such as packing bays and shelves), paired with a **finite state machine** and real-time sensor input processed by a **model-based reflex agent**.
-            </p>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <!-- Highlight 1: Control & Logic -->
+                <div class="bg-[#161b22] p-5 rounded-lg border border-red-800/50 hover:border-red-500/80 transition duration-300">
+                    <i data-lucide="git-branch" class="w-6 h-6 text-red-400 mb-3"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">Control Logic</h3>
+                    <p class="text-sm text-gray-400">Behavior managed by a **Finite State Machine** (FSM) for reliable task sequencing.</p>
+                </div>
+
+                <!-- Highlight 2: Hardware -->
+                <div class="bg-[#161b22] p-5 rounded-lg border border-blue-800/50 hover:border-blue-500/80 transition duration-300">
+                    <i data-lucide="box" class="w-6 h-6 text-blue-400 mb-3"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">Mechanical Design</h3>
+                    <p class="text-sm text-gray-400">Chassis designed in **Fusion 360** and fabricated using 3D printing.</p>
+                </div>
+
+                <!-- Highlight 3: Navigation -->
+                <div class="bg-[#161b22] p-5 rounded-lg border border-green-800/50 hover:border-green-500/80 transition duration-300">
+                    <i data-lucide="route" class="w-6 h-6 text-green-400 mb-3"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">Path Planning</h3>
+                    <p class="text-sm text-gray-400">Hybrid obstacle avoidance: **Potential Fields** for smoothing and **Bug 2** for close quarters.</p>
+                </div>
+
+                <!-- Highlight 4: Decision Making -->
+                <div class="bg-[#161b22] p-5 rounded-lg border border-yellow-800/50 hover:border-yellow-500/80 transition duration-300">
+                    <i data-lucide="cpu" class="w-6 h-6 text-yellow-400 mb-3"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">Intelligence</h3>
+                    <p class="text-sm text-gray-400">Uses a **model-based reflex agent** for robust real-time decision making.</p>
+                </div>
+            </div>
         </section>
 
-        <!-- Design Process Section -->
+        <!-- Navigation and Avoidance Section -->
         <section class="max-w-4xl mx-auto my-8 p-6 md:p-10 bg-[#161b22] rounded-xl shadow-2xl border border-gray-700">
-            <h2 class="text-3xl font-bold text-blue-400 mb-4 border-b border-gray-600 pb-2 inline-block">Design Process</h2>
-            <p class="text-gray-300">
-                The chassis was designed in **Fusion 360** and 3D-printed. The electronics were prototyped using an Arduino-based system, and the robot was tested in multiple indoor setups. The robot logic was implemented on a **Raspberry Pi** running a modular navigation system.
-            </p>
-        </section>
-
-        <!-- Key Features Section -->
-        <section class="max-w-4xl mx-auto my-8 p-6 md:p-10 bg-[#161b22] rounded-xl shadow-2xl border border-gray-700">
-            <h2 class="text-3xl font-bold text-blue-400 mb-4 border-b border-gray-600 pb-2 inline-block">Key Features</h2>
-            <ul class="list-disc list-inside space-y-2 text-gray-300 pl-4">
-                <li>Model-based reflex navigation system</li>
-                <li>Vision-based item detection and alignment</li>
-                <li>Obstacle avoidance using **Bug 2** and **potential fields**</li>
-                <li>Servo-controlled item collection and delivery</li>
-                <li>Modular and maintainable chassis and code architecture</li>
-            </ul>
-        </section>
-
-        <!-- System Architecture Section -->
-        <section class="max-w-4xl mx-auto my-8 p-6 md:p-10 bg-[#161b22] rounded-xl shadow-2xl border border-gray-700">
-            <h2 class="text-3xl font-bold text-blue-400 mb-4 border-b border-gray-600 pb-2 inline-block">System Architecture</h2>
-            <p class="text-gray-300">
-                The robot operates using a structured navigation system divided into three stages: locating the item, grabbing it, and delivering it to the packing bay. Each stage includes substages and is supported by a **finite state machine** that ensures smooth transitions and recovery if a task fails. The robot uses a model-based reflex agent to make decisions based on both current and past sensor input, improving reliability in real-time operation.
-            </p>
-        </section>
-
-        <!-- Navigation and Obstacle Avoidance Section -->
-        <section class="max-w-4xl mx-auto my-8 p-6 md:p-10 bg-[#161b22] rounded-xl shadow-2xl border border-gray-700">
-            <h2 class="text-3xl font-bold text-blue-400 mb-4 border-b border-gray-600 pb-2 inline-block">Navigation and Obstacle Avoidance</h2>
+            <h2 class="text-3xl font-bold text-yellow-400 mb-4 border-b border-gray-600 pb-2 inline-block">Navigation and Obstacle Avoidance</h2>
+            
             <p class="text-gray-300">
                 The navigation system converts sensor inputs into motor commands, enabling the robot to turn, drive straight, or correct its path. A hybrid method is used: **potential fields** for smooth long-range movement, and **Bug 2** for close-range obstacle avoidance. This allows the robot to maintain a smooth trajectory while dynamically responding to its environment.
             </p>
+
             <ul class="list-disc list-inside space-y-2 text-gray-300 pl-4 mt-4">
                 <li><strong>Bug 2 Algorithm:</strong> Follows the edge of an obstacle until a clear path to the goal is found, ensuring reliable obstacle circumvention.</li>
-                <li><strong>Potential Fields:</strong> Obstacles act as repelling forces and the goal as an attractor, resulting in fluid motion toward the target.</li>
+                <li><strong>Potential Fields:</strong> Obstacles act as repelling forces and the goal acts as an attractor, resulting in fluid motion toward the target.</li>
             </ul>
-        
-            <div class="video-container rounded-xl shadow-xl">
-                <video controls class="rounded-xl">
+
+            <h3 class="text-2xl font-bold text-white mt-8 mb-4">Digital Simulation</h3>
+            <div class="aspect-w-16 aspect-h-9 aspect-video-custom w-full rounded-xl shadow-xl overflow-hidden">
+                <video controls class="w-full h-full object-cover">
                     <source src="Warehouse.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
@@ -122,37 +142,47 @@
 
         <!-- Operational Stages Section -->
         <section class="max-w-4xl mx-auto my-8 p-6 md:p-10 bg-[#161b22] rounded-xl shadow-2xl border border-gray-700">
-            <h2 class="text-3xl font-bold text-blue-400 mb-4 border-b border-gray-600 pb-2 inline-block">Operational Stages</h2>
-            <p class="text-gray-300"><strong>Stage 1 – Item Location:</strong> The robot scans for the packing bay and row markers. It avoids blind zones and aligns using shelf angles to reach a stable scanning zone.</p>
-            <p class="text-gray-300"><strong>Stage 2 – Item Pickup:</strong> It raises the grabber, aligns with the detected item, and drives forward to activate the pick-up mechanism.</p>
-            <p class="text-gray-300"><strong>Stage 3 – Delivery:</strong> The robot navigates back toward the packing bay using shelf alignment and vision input. Upon arrival, it drops the item and resets the FSM.</p>
+            <h2 class="text-3xl font-bold text-yellow-400 mb-4 border-b border-gray-600 pb-2 inline-block">Operational Stages (FSM)</h2>
+            <p class="text-gray-300 mb-4">The robot operates using a structured navigation system divided into three main stages, coordinated by the Finite State Machine:</p>
+            
+            <ul class="list-decimal list-inside space-y-3 text-gray-300 pl-4">
+                <li><strong>Stage 1 – Item Location:</strong> The robot scans for the packing bay and row markers. It avoids blind zones and aligns using shelf angles to reach a stable scanning zone.</li>
+                <li><strong>Stage 2 – Item Pickup:</strong> It raises the grabber, aligns with the detected item, and drives forward to activate the pick-up mechanism.</li>
+                <li><strong>Stage 3 – Delivery:</strong> The robot navigates back toward the packing bay using shelf alignment and vision input. Upon arrival, it drops the item and resets the FSM.</li>
+            </ul>
         </section>
 
-        <!-- Performance and Validation Section -->
+        <!-- Design and Validation Section -->
         <section class="max-w-4xl mx-auto my-8 p-6 md:p-10 bg-[#161b22] rounded-xl shadow-2xl border border-gray-700">
-            <h2 class="text-3xl font-bold text-blue-400 mb-4 border-b border-gray-600 pb-2 inline-block">Performance and Validation</h2>
+            <h2 class="text-3xl font-bold text-yellow-400 mb-4 border-b border-gray-600 pb-2 inline-block">Design, Validation, and Reflection</h2>
+            
+            <p class="text-gray-300 mb-4">
+                The electronics were prototyped using an Arduino-based system, and the robot logic was implemented on a **Raspberry Pi** running a modular navigation system. During real-world tests, the robot successfully retrieved and delivered items with a success rate of approximately **75%**. It demonstrated robust integration between navigation, obstacle avoidance, and vision systems.
+            </p>
+            
+            <h4 class="text-lg font-semibold text-white mt-4">Skills Developed:</h4>
             <p class="text-gray-300">
-                During real-world tests, the robot successfully retrieved and delivered items with a success rate of approximately **75%**. It demonstrated robust integration between navigation, obstacle avoidance, and vision systems. Variability in lighting, battery level, and floor traction occasionally impacted reliability but did not prevent task completion.
+                This project helped develop skills in **embedded programming**, **sensor integration**, and **mechanical design**. It also emphasized the importance of structured architecture, real-time decision-making, and robust testing.
             </p>
 
-            <div class="video-container rounded-xl shadow-xl">
-                <video controls class="rounded-xl">
+            <h3 class="text-2xl font-bold text-white mt-8 mb-4">Physical Robot Test Run</h3>
+            <div class="aspect-w-16 aspect-h-9 aspect-video-custom w-full rounded-xl shadow-xl overflow-hidden">
+                <video controls class="w-full h-full object-cover">
                     <source src="Robot_2.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
             </div>
             <p class="text-gray-400 text-sm mt-3 text-center">
-                Physical robot test run.
+                The physical robot successfully executing a retrieval and delivery sequence.
             </p>
         </section>
 
-        <!-- Reflection Section -->
-        <section class="max-w-4xl mx-auto my-8 p-6 md:p-10 bg-[#161b22] rounded-xl shadow-2xl border border-gray-700">
-            <h2 class="text-3xl font-bold text-blue-400 mb-4 border-b border-gray-600 pb-2 inline-block">Reflection</h2>
-            <p class="text-gray-300">
-                This project helped develop skills in **embedded programming**, **sensor integration**, and **mechanical design**. It also emphasized the importance of structured architecture, real-time decision-making, and robust testing. The model-based reflex agent combined with finite state logic proved effective in coordinating complex autonomous behavior in a constrained environment.
-            </p>
-        </section>
+        <!-- Back to projects link -->
+        <a href="index.html#projects" class="inline-flex items-center mt-8 text-blue-400 hover:text-blue-300 transition duration-150 font-medium">
+            <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i>
+            Back to All Projects
+        </a>
+
     </main>
 
     <!-- Footer -->
@@ -162,5 +192,9 @@
         </div>
     </footer>
 
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+    </script>
 </body>
 </html>
