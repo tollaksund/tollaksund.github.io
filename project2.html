@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Line-Following Robot: Project Details</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Line-Following Robot: The PID Challenge – Tollak Sund</title>
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Load Lucide Icons -->
@@ -22,102 +22,74 @@
             color: #c9d1d9; /* Light grey text */
         }
 
-        /* Ensure the body has padding to account for the fixed navbar */
-        .pt-20 {
-            padding-top: 5rem;
-        }
-
-        /* Custom glow effect for the main card */
+        /* Custom glow effect, updated to match the yellow/orange glow of the project pages */
         .project-card {
-            box-shadow: 0 10px 30px rgba(47, 128, 237, 0.15), 0 0 5px rgba(47, 128, 237, 0.1);
+            box-shadow: 0 10px 30px rgba(255, 165, 0, 0.15), 0 0 5px rgba(255, 165, 0, 0.1);
         }
 
-        /* Hide dropdown content by default and handle responsiveness */
-        #mobile-menu {
-            transition: all 0.3s ease-in-out;
-        }
-
-        /* Animation for icons on hover */
-        .icon-link:hover .lucide {
-            transform: scale(1.1);
-            color: #58a6ff;
+        /* Custom aspect ratio utilities */
+        .aspect-video-custom {
+            aspect-ratio: 16 / 9;
         }
     </style>
 </head>
 <body class="selection:bg-blue-600 selection:text-white">
 
-    <!-- Fixed Header/Navbar (simulating GitHub's header style) -->
-    <header class="fixed top-0 left-0 w-full bg-[#161b22] border-b border-gray-700 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <div class="flex items-center">
-                <!-- Project/Repo Name -->
-                <a href="#" class="text-xl font-bold text-white flex items-center">
-                    <i data-lucide="bot" class="w-6 h-6 mr-2 text-blue-400"></i>
-                    Line-Follower-Robot
-                </a>
-            </div>
-            
-            <!-- Desktop Navigation -->
-            <nav class="hidden md:flex space-x-6">
-                <a href="#overview" class="text-sm font-medium text-gray-400 hover:text-white transition duration-150">Overview</a>
-                <a href="#technical" class="text-sm font-medium text-gray-400 hover:text-white transition duration-150">Technical Stack</a>
-                <a href="index.html#projects" class="text-sm font-medium text-gray-400 hover:text-white transition duration-150">All Projects</a>
-            </nav>
-
-            <!-- Social Links (Simulated GitHub Profile/Repo Buttons) -->
-            <div class="hidden md:flex space-x-4">
-                <a href="#" class="icon-link" aria-label="View on GitHub">
-                    <i data-lucide="github" class="w-5 h-5 text-gray-400 hover:text-white transition duration-150"></i>
-                </a>
-                <a href="#" class="icon-link" aria-label="Star this project">
-                    <i data-lucide="star" class="w-5 h-5 text-gray-400 hover:text-white transition duration-150"></i>
-                </a>
-            </div>
-        </div>
+    <!-- Header Section (Project Title) -->
+    <header class="bg-[#161b22] p-10 text-center border-b border-gray-700">
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white">Line-Following Robot</h1>
+        <p class="text-xl text-gray-400 mt-2">A high-precision, real-time path correction system using PID control.</p>
     </header>
 
+    <!-- Navigation (Sticky, points back to index) -->
+    <nav class="sticky top-0 w-full bg-[#161b22]/90 backdrop-blur-sm shadow-xl flex justify-center gap-6 p-4 z-50 border-b border-gray-700">
+        <a href="index.html#home" class="text-white font-semibold hover:text-yellow-400 transition duration-150">Home</a>
+        <a href="index.html#projects" class="text-white font-semibold hover:text-yellow-400 transition duration-150">Projects</a>
+        <a href="index.html#about" class="text-white font-semibold hover:text-yellow-400 transition duration-150">About</a>
+        <a href="index.html#contact" class="text-white font-semibold hover:text-yellow-400 transition duration-150">Contact</a>
+    </nav>
+
     <!-- Main Content Area -->
-    <main class="pt-20 pb-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         
         <!-- Project Hero and Summary -->
-        <section id="overview" class="mb-12">
-            <h1 class="text-5xl font-extrabold text-white mb-4 leading-tight">Line-Following Robot: The PID Challenge</h1>
-            <p class="text-xl text-gray-400 mb-8">
-                An autonomous robotics project focusing on precision and real-time path correction using custom hardware and closed-loop control.
+        <section id="overview" class="mb-12 max-w-4xl mx-auto">
+            <h2 class="text-4xl font-extrabold text-yellow-400 mb-4 leading-tight">The PID Challenge: Precision Line Following</h2>
+            
+            <p class="text-lg text-gray-300 mb-8">
+                This autonomous robotics project focused on achieving **high-speed precision** in path correction using a custom-built chassis and a carefully calibrated **Proportional-Integral-Derivative (PID)** controller. The goal was to minimize lateral error and achieve the fastest possible lap times.
             </p>
             
-            <!-- Stats Bar (Simulated GitHub info) -->
-            <div class="flex flex-wrap gap-4 text-sm text-gray-400">
+            <!-- Stats Bar (Visual Indicators) -->
+            <div class="flex flex-wrap gap-6 p-4 bg-[#161b22] rounded-lg border border-gray-700 text-sm text-gray-400">
                 <span class="flex items-center space-x-1">
                     <i data-lucide="code" class="w-4 h-4 text-blue-400"></i>
-                    <span>C++ / Mechatronics</span>
+                    <span>C++ / Microcontroller</span>
                 </span>
                 <span class="flex items-center space-x-1">
-                    <i data-lucide="git-fork" class="w-4 h-4 text-green-400"></i>
-                    <span>2 Forks</span>
+                    <i data-lucide="gauge" class="w-4 h-4 text-red-400"></i>
+                    <span>Primary Algorithm: PID Control</span>
                 </span>
                 <span class="flex items-center space-x-1">
-                    <i data-lucide="star" class="w-4 h-4 text-yellow-400"></i>
-                    <span>14 Stars</span>
-                </span>
-                <span class="flex items-center space-x-1">
-                    <i data-lucide="bug" class="w-4 h-4 text-red-400"></i>
-                    <span>0 Open Issues</span>
+                    <i data-lucide="layout-grid" class="w-4 h-4 text-green-400"></i>
+                    <span>Sensors: Infrared Array (8x)</span>
                 </span>
             </div>
         </section>
 
-        <!-- Image and Detailed Description -->
-        <div class="bg-[#161b22] p-6 sm:p-8 rounded-xl border border-gray-700 project-card">
+        <!-- Image and Detailed Description Card -->
+        <div class="bg-[#161b22] p-6 sm:p-8 rounded-xl border border-gray-700 project-card max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-white mb-6 border-b border-gray-700 pb-2">Hardware and Control System</h2>
+
             <div class="grid md:grid-cols-2 gap-8 items-start">
                 
                 <!-- Project Image/Demo Placeholder -->
                 <div class="flex flex-col">
-                    <!-- Placeholder image to replace linjeRobot.jpg -->
+                    <!-- Placeholder image for the robot on a track -->
                     <img 
                         src="https://placehold.co/800x600/1e293b/94a3b8?text=Robot+On+Track+Demo" 
                         alt="Line-Following Robot running on a track" 
-                        class="rounded-lg shadow-2xl object-cover aspect-video w-full"
+                        class="rounded-lg shadow-2xl object-cover aspect-video-custom w-full border border-gray-600"
                         onerror="this.onerror=null; this.src='https://placehold.co/800x600/1e293b/94a3b8?text=Robot+Image+Not+Available';"
                     >
                     <p class="text-xs text-gray-500 mt-2 text-center">Simulated image of the robot chassis and sensor array.</p>
@@ -125,54 +97,54 @@
 
                 <!-- Description -->
                 <div>
-                    <h2 class="text-3xl font-bold text-white mb-4 border-b border-gray-700 pb-2">Project Overview</h2>
+                    <h3 class="text-2xl font-semibold text-yellow-400 mb-3">Core Functionality</h3>
                     <p class="mb-4 text-gray-300">
-                        This robot was engineered to precisely follow black electrical tape laid out on a white surface. It uses an array of infrared reflectance sensors to continuously monitor the line position, allowing for rapid and accurate path adjustments.
+                        The robot uses an array of infrared reflectance sensors positioned beneath the chassis. These sensors provide continuous data on the line's position relative to the center of the robot, translating light intensity differences into a single, quantifiable error value.
                     </p>
                     <p class="mb-6 text-gray-300">
-                        The core challenge was achieving consistent lap times and managing sharp turns. This was solved through the implementation of a **highly-tuned feedback control system**, demonstrating a practical application of mechatronics principles.
+                        This error value is fed directly into the **PID controller**, which calculates the necessary correctional output. This output adjusts the differential speed of the two DC motors, allowing the robot to make rapid, smooth steering adjustments to remain centered over the line, even on sharp curves.
                     </p>
 
-                    <h3 class="text-xl font-semibold text-blue-400 mb-3">Performance Highlights:</h3>
+                    <h3 class="text-xl font-semibold text-blue-400 mb-3">Tuning and Validation:</h3>
                     <ul class="list-disc list-inside space-y-2 text-gray-400 ml-4">
-                        <li>Achieved **real-time error correction** based on light intensity data.</li>
-                        <li>Validated for consistent lap times under competition rules.</li>
-                        <li>Robust performance across varying lighting conditions.</li>
+                        <li>**P (Proportional) Gain:** Provided the initial, fast response to the error.</li>
+                        <li>**I (Integral) Gain:** Corrected for steady-state errors (e.g., motor asymmetry) over time.</li>
+                        <li>**D (Derivative) Gain:** Dampened oscillations, crucial for smooth high-speed cornering.</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- Technical Stack and Key Components -->
-        <section id="technical" class="mt-12">
-            <h2 class="text-3xl font-bold text-white mb-6">Technical Stack & Hardware</h2>
+        <!-- Technical Stack and Key Components (Dashboard Style) -->
+        <section id="technical" class="mt-12 max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-white mb-6">Technical Systems Summary</h2>
             
             <div class="grid md:grid-cols-3 gap-6">
 
                 <!-- PID Control Card -->
-                <div class="bg-[#161b22] p-5 rounded-lg border border-blue-800/50 hover:border-blue-500/80 transition duration-300">
-                    <i data-lucide="maximize" class="w-6 h-6 text-blue-400 mb-3"></i>
+                <div class="bg-[#161b22] p-5 rounded-lg border border-red-800/50 hover:border-red-500/80 transition duration-300">
+                    <i data-lucide="maximize" class="w-6 h-6 text-red-400 mb-3"></i>
                     <h3 class="text-xl font-semibold text-white mb-2">PID Control Logic</h3>
                     <p class="text-sm text-gray-400">
-                        Implemented a **Proportional-Integral-Derivative (PID)** controller to dynamically adjust motor speeds. This allowed for smooth, aggressive cornering and minimized overshoot.
+                        A real-time closed-loop control algorithm for dynamic motor differential adjustment, ensuring minimal steady-state error.
                     </p>
                 </div>
 
                 <!-- Hardware Card -->
-                <div class="bg-[#161b22] p-5 rounded-lg border border-green-800/50 hover:border-green-500/80 transition duration-300">
-                    <i data-lucide="wrench" class="w-6 h-6 text-green-400 mb-3"></i>
-                    <h3 class="text-xl font-semibold text-white mb-2">Custom Mechanics</h3>
+                <div class="bg-[#161b22] p-5 rounded-lg border border-blue-800/50 hover:border-blue-500/80 transition duration-300">
+                    <i data-lucide="wrench" class="w-6 h-6 text-blue-400 mb-3"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">Custom Mechanicals</h3>
                     <p class="text-sm text-gray-400">
-                        Features a **custom 3D-printed chassis** for optimal sensor placement and weight distribution, paired with powerful DC motors and encoders for precise distance measurement.
+                        A custom **3D-printed chassis** optimized for low center of gravity and perfect sensor-to-ground distance calibration.
                     </p>
                 </div>
 
                 <!-- Software Card -->
-                <div class="bg-[#161b22] p-5 rounded-lg border border-yellow-800/50 hover:border-yellow-500/80 transition duration-300">
-                    <i data-lucide="cpu" class="w-6 h-6 text-yellow-400 mb-3"></i>
-                    <h3 class="text-xl font-semibold text-white mb-2">Microcontroller Firmware</h3>
+                <div class="bg-[#161b22] p-5 rounded-lg border border-green-800/50 hover:border-green-500/80 transition duration-300">
+                    <i data-lucide="cpu" class="w-6 h-6 text-green-400 mb-3"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">Embedded C++</h3>
                     <p class="text-sm text-gray-400">
-                        Firmware was developed entirely in **C++** on a high-speed microcontroller to ensure low-latency sensor reading and control loop execution.
+                        The firmware was developed in C++ for maximum execution speed and direct hardware manipulation (register access).
                     </p>
                 </div>
             </div>
@@ -188,7 +160,7 @@
         </section>
 
         <!-- Back to projects link -->
-        <a href="index.html#projects" class="inline-flex items-center mt-12 text-blue-400 hover:text-blue-300 transition duration-150">
+        <a href="index.html#projects" class="inline-flex items-center mt-12 text-yellow-400 hover:text-yellow-300 transition duration-150 font-medium">
             <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i>
             Back to All Projects
         </a>
@@ -198,7 +170,7 @@
     <!-- Footer -->
     <footer class="bg-[#161b22] border-t border-gray-700 mt-16 py-6">
         <div class="max-w-5xl mx-auto px-4 text-center text-sm text-gray-500">
-            © 2025 Project Repository | Built with 💙 and Tailwind CSS.
+            &copy; 2025 Tollak Sund — All rights reserved.
         </div>
     </footer>
 
