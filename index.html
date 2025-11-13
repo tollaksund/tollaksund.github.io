@@ -1,341 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Tollak Sund</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Tollak Sund | Mechanical & Mechatronics Projects</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons for Contact Section -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Setup Inter Font and overall dark theme aesthetics */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        :root {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
 
-    html {
-      scroll-behavior: smooth;
-    }
+        /* Dark mode background for the entire page */
+        body {
+            background-color: #0d1117; /* GitHub dark theme background */
+            color: #c9d1d9; /* Light grey text */
+        }
 
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      color: #333;
-    }
+        /* Video Background Styling */
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -2;
+            pointer-events: none;
+        }
 
-    .background-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      z-index: -2;
-      pointer-events: none;
-    }
+        /* Custom Scrollbar for Project Carousel (for better visual on desktop) */
+        .project-carousel::-webkit-scrollbar {
+            height: 8px;
+        }
+        .project-carousel::-webkit-scrollbar-thumb {
+            background-color: #3b82f6; /* blue-500 */
+            border-radius: 10px;
+        }
+        .project-carousel::-webkit-scrollbar-track {
+            background: #1f2937; /* gray-800 */
+        }
 
-    .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
-      z-index: -1;
-    }
-
-    .navbar {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: rgba(255, 255, 255, 0.9);
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      padding: 1rem;
-      z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    .navbar a {
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
-    }
-
-    .navbar a:hover {
-      color: #0077cc;
-    }
-
-    .hero {
-      height: 95vh;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8);
-      text-align: center;
-      padding: 0 20px;
-      z-index: 1;
-    }
-
-    .hero h1 {
-      font-size: 3em;
-      position: relative;
-      z-index: 1;
-    }
-
-    section {
-      padding: 60px 20px;
-      text-align: center;
-      background-color: white;
-    }
-    section:nth-of-type(even) {
-      background-color: #f7f7f7;
-    }
-
-    section h2 {
-      margin-bottom: 20px;
-      font-size: 2em;
-    }
-
-    section p {
-      max-width: 700px;
-      margin: auto;
-      font-size: 1.1em;
-      line-height: 1.6;
-    }
-
-    .spacer {
-      height: 60px;
-    }
-
-    .carousel-wrapper {
-      position: relative;
-      max-width: 100%;
-      overflow: hidden;
-      margin-top: 40px;
-    }
-
-    .project-carousel {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      padding: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .project-carousel::-webkit-scrollbar {
-      display: none;
-    }
-
-    .project-card {
-      flex: 0 0 300px;
-      scroll-snap-align: start;
-      background: white;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      overflow: hidden;
-      text-decoration: none;
-      color: #333;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-      transition: transform 0.2s ease;
-    }
-
-    .project-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .project-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .project-card .text {
-      padding: 15px;
-    }
-
-    .project-card .text h3 {
-      margin: 0 0 10px;
-      font-size: 1.2em;
-    }
-
-    .project-card .text p {
-      margin: 0;
-      font-size: 0.95em;
-    }
-
-    .scroll-button {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: white;
-      border: 1px solid #ccc;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      font-size: 1.2em;
-      cursor: pointer;
-      z-index: 2;
-    }
-
-    .scroll-button:hover {
-      background: #eee;
-    }
-
-    .scroll-left {
-      left: 10px;
-    }
-
-    .scroll-right {
-      right: 10px;
-    }
-
-    @media (max-width: 768px) {
-      .scroll-button {
-        display: none;
-      }
-    }
-    #about {
-      padding: 60px 20px 30px 20px; /* top, right, bottom, left */
-      text-align: center;
-      background-color: white;
-    }
-  </style>
+        /* Scroll button visibility on smaller screens */
+        @media (max-width: 768px) {
+            .scroll-button {
+                display: none !important;
+            }
+        }
+    </style>
 </head>
-<body>
+<body class="selection:bg-blue-600 selection:text-white">
 
-  <!-- Background video -->
-  <video autoplay muted loop playsinline class="background-video">
-    <source src="Cover.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+    <!-- Background video (Keeping the original source and attributes) -->
+    <video autoplay muted loop playsinline class="background-video">
+        <source src="Cover.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 
-  <!-- Navbar -->
-  <div class="navbar">
-    <a href="#home">Home</a>
-    <a href="#projects">Projects</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </div>
+    <!-- Overlay with gradient fade to body background color -->
+    <div class="fixed inset-0 bg-gradient-to-t from-[#0d1117]/95 to-transparent z-[-1] pointer-events-none"></div>
 
-  <!-- Hero section -->
-  <div id="home" class="hero">
-    <div class="overlay"></div>
-    <h1>Welcome to Tollak Sund’s Website</h1>
-  </div>
-
-  <div class="spacer"></div>
-
-  <!-- About Section (Moved Up) -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I’m Tollak Sund, a Mechanical Engineering student at the Norwegian University of Science and Technology (NTNU), currently on exchange at Queensland University of Technology (QUT). My academic focus blends mechanical systems, mechatronics, and product development, with hands-on experience in designing, programming, and building machines.
-      <br><br>
-      This website is a showcase of the projects I’ve built, the skills I’ve developed.
-    </p>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects">
-  <h2>Projects</h2>
-  <p>Explore some of the projects I’ve worked on below:</p>
-
-  <div class="carousel-wrapper">
-    <button class="scroll-button scroll-left" onclick="scrollCarousel(-1)">←</button>
-    <div class="project-carousel" id="projectCarousel">
-
-      <a class="project-card" href="project4.html">
-        <img src="DroneCover.JPG" alt="Autonomous Drone">
-        <div class="text">
-          <h3>Autonomous Drone</h3>
-          <p>A drone designed for autonomous indoor navigation using visual markers and sensors.</p>
-        </div>
-      </a>
-
-      <a class="project-card" href="project1.html">
-        <img src="VarehusRobot_cover.jpg" alt="Autonomous Warehouse Robot">
-        <div class="text">
-          <h3>Autonomous Warehouse Robot</h3>
-          <p>A robot that uses sensors and actuators to navigate a dynamic warehouse environment.</p>
-          
-        </div>
-      </a>
-      
-      <a class="project-card" href="project2.html">
-        <img src="linjeRobot.jpg" alt="Line-Following Robot">
-        <div class="text">
-          <h3>Line-Following Robot</h3>
-          <p> Arobot to follow a line using infrared reflectance sensors and act differently on sensor imputs.</p>
-        </div>
-      </a>
-
-      <a class="project-card" href="project5.html">
-        <img src="urchinator.jpg" alt="Urchin Remover">
-        <div class="text">
-          <h3>Urchin Remover</h3>
-          <p>A robot that uses sensors and actuators to navigate a dynamic warehouse environment.</p>
-        </div>
-      </a>
-
+    <!-- Fixed Navbar (Dark, Transparent, and Professional) -->
+    <div class="fixed top-0 w-full bg-[#161b22]/90 backdrop-blur-sm shadow-xl flex justify-center gap-6 p-4 z-50 border-b border-gray-700">
+        <a href="#home" class="text-white font-semibold hover:text-blue-400 transition duration-150">Home</a>
+        <a href="#about" class="text-white font-semibold hover:text-blue-400 transition duration-150">About</a>
+        <a href="#projects" class="text-white font-semibold hover:text-blue-400 transition duration-150">Projects</a>
+        <a href="#contact" class="text-white font-semibold hover:text-blue-400 transition duration-150">Contact</a>
     </div>
-    <button class="scroll-button scroll-right" onclick="scrollCarousel(1)">→</button>
-  </div>
-</section>
 
-  <!-- Contact Section -->
-  <section id="contact">
-  <h2>Contact</h2>
-  <p>
-    📧 <strong>Email:</strong> <a href="mailto:tollak.sund@andeby.no">tollak.sund@andeby.no</a><br>
-    📱 <strong>Phone:</strong> +47 475 20 330<br>
-    🔗 <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/tollak-sund" target="_blank">linkedin.com/in/tollak-sund</a><br><br>
+    <!-- Hero section - Full Height, Centered Text -->
+    <div id="home" class="h-screen flex justify-center items-center text-white text-center p-5 relative z-10">
+        <div class="bg-black/40 p-6 rounded-xl backdrop-blur-sm border border-white/20">
+            <h1 class="text-5xl md:text-6xl font-extrabold mb-2 leading-tight">Tollak Sund</h1>
+            <p class="text-xl md:text-2xl font-light text-gray-300">Mechanical Engineering | Mechatronics | Robotics</p>
+        </div>
+    </div>
 
-  </p>
-</section>
+    <!-- Main Content Sections -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
-  <!-- JavaScript -->
-  <script>
-    function scrollCarousel(direction) {
-      const carousel = document.getElementById('projectCarousel');
-      const scrollAmount = 320;
-      carousel.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
-    }
+        <!-- About Section -->
+        <section id="about" class="bg-[#161b22] p-8 md:p-12 rounded-xl shadow-2xl border border-gray-700 mb-12">
+            <h2 class="text-3xl font-bold text-white mb-6 border-b border-blue-400/50 pb-3 inline-block">About Me</h2>
+            <p class="max-w-4xl mx-auto text-lg text-gray-300 text-left">
+                I’m Tollak Sund, a Mechanical Engineering student at the **Norwegian University of Science and Technology (NTNU)**, currently on exchange at Queensland University of Technology (QUT). My academic focus blends core mechanical systems, mechatronics, and product development, with hands-on experience in designing, programming, and building complex machines.
+                <br><br>
+                This website serves as a showcase of the projects I’ve built, demonstrating practical application of **PID control, embedded C++ programming, and custom 3D design**. I thrive on technical challenges that require integrating hardware and software solutions.
+            </p>
+        </section>
 
-    function updateScrollButtons() {
-      const carousel = document.getElementById('projectCarousel');
-      const leftButton = document.querySelector('.scroll-left');
-      const rightButton = document.querySelector('.scroll-right');
+        <!-- Projects Section -->
+        <section id="projects" class="py-12">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-white mb-3 border-b border-blue-400/50 pb-3 inline-block">Featured Projects</h2>
+                <p class="text-gray-400 max-w-xl mx-auto">A selection of my work in robotics, control systems, and mechanical design.</p>
+            </div>
 
-      const atStart = carousel.scrollLeft <= 20;
-      const atEnd = carousel.scrollLeft >= carousel.scrollWidth - carousel.clientWidth - 0.5;
+            <div class="carousel-wrapper relative py-4">
+                
+                <!-- Scroll Buttons (Hidden on mobile) -->
+                <button class="scroll-button scroll-left absolute top-1/2 -left-3 transform -translate-y-1/2 bg-gray-800 hover:bg-gray-700 text-white p-3 rounded-full shadow-lg z-20 transition duration-150 border border-gray-600" onclick="scrollCarousel(-1)">
+                    <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                </button>
+                <button class="scroll-button scroll-right absolute top-1/2 -right-3 transform -translate-y-1/2 bg-gray-800 hover:bg-gray-700 text-white p-3 rounded-full shadow-lg z-20 transition duration-150 border border-gray-600" onclick="scrollCarousel(1)">
+                    <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                </button>
 
-      leftButton.style.display = atStart ? 'none' : 'block';
-      rightButton.style.display = atEnd ? 'none' : 'block';
-    }
+                <!-- Project Carousel: horizontal scrolling on mobile/desktop -->
+                <div class="project-carousel flex overflow-x-scroll snap-x snap-mandatory gap-6 p-4 md:p-6 [-webkit-overflow-scrolling:touch]" id="projectCarousel">
 
-    window.addEventListener('load', () => {
-      const carousel = document.getElementById('projectCarousel');
-      const firstCard = carousel.querySelector('.project-card');
+                    <!-- Project Card 1: Autonomous Drone -->
+                    <a class="project-card flex-shrink-0 w-72 lg:w-80 snap-start bg-[#161b22] border border-gray-700 rounded-lg overflow-hidden text-[#c9d1d9] shadow-xl hover:shadow-blue-500/20 transition duration-300 transform hover:-translate-y-1" href="project4.html">
+                        <img src="DroneCover.JPG" alt="Autonomous Drone" class="w-full h-48 object-cover">
+                        <div class="text p-4">
+                            <h3 class="font-bold text-xl mb-2 text-white">Autonomous Drone</h3>
+                            <p class="text-sm text-gray-400">A drone designed for autonomous indoor navigation using visual markers and inertial sensors.</p>
+                        </div>
+                    </a>
 
-      if (firstCard) {
-        const cardRect = firstCard.getBoundingClientRect();
-        const carouselRect = carousel.getBoundingClientRect();
-        const scrollOffset = cardRect.left - carouselRect.left - (window.innerWidth / 2 - cardRect.width / 2);
-        carousel.scrollLeft += scrollOffset;
-      }
+                    <!-- Project Card 2: Autonomous Warehouse Robot -->
+                    <a class="project-card flex-shrink-0 w-72 lg:w-80 snap-start bg-[#161b22] border border-gray-700 rounded-lg overflow-hidden text-[#c9d1d9] shadow-xl hover:shadow-blue-500/20 transition duration-300 transform hover:-translate-y-1" href="project1.html">
+                        <img src="VarehusRobot_cover.jpg" alt="Autonomous Warehouse Robot" class="w-full h-48 object-cover">
+                        <div class="text p-4">
+                            <h3 class="font-bold text-xl mb-2 text-white">Autonomous Warehouse Robot</h3>
+                            <p class="text-sm text-gray-400">A robot that uses complex sensors and actuators to navigate a dynamic warehouse environment.</p>
+                        </div>
+                    </a>
+                    
+                    <!-- Project Card 3: Line-Following Robot (The one we just updated) -->
+                    <a class="project-card flex-shrink-0 w-72 lg:w-80 snap-start bg-[#161b22] border border-gray-700 rounded-lg overflow-hidden text-[#c9d1d9] shadow-xl hover:shadow-blue-500/20 transition duration-300 transform hover:-translate-y-1" href="project2.html">
+                        <img src="linjeRobot.jpg" alt="Line-Following Robot" class="w-full h-48 object-cover">
+                        <div class="text p-4">
+                            <h3 class="font-bold text-xl mb-2 text-white">Line-Following Robot</h3>
+                            <p class="text-sm text-gray-400">Precision PID control for real-time path correction using infrared reflectance sensors.</p>
+                        </div>
+                    </a>
 
-      setTimeout(updateScrollButtons, 150);
-    });
+                    <!-- Project Card 4: Urchin Remover -->
+                    <a class="project-card flex-shrink-0 w-72 lg:w-80 snap-start bg-[#161b22] border border-gray-700 rounded-lg overflow-hidden text-[#c9d1d9] shadow-xl hover:shadow-blue-500/20 transition duration-300 transform hover:-translate-y-1" href="project5.html">
+                        <img src="urchinator.jpg" alt="Urchin Remover" class="w-full h-48 object-cover">
+                        <div class="text p-4">
+                            <h3 class="font-bold text-xl mb-2 text-white">Urchin Remover Robot</h3>
+                            <p class="text-sm text-gray-400">Innovative mechanical design for environmental robotics and ocean cleanup challenges.</p>
+                        </div>
+                    </a>
 
-    window.addEventListener('resize', updateScrollButtons);
+                </div>
+            </div>
+        </section>
 
-    window.addEventListener('DOMContentLoaded', () => {
-      const carousel = document.getElementById('projectCarousel');
-      carousel.addEventListener('scroll', updateScrollButtons);
-    });
-  </script>
+        <!-- Contact Section -->
+        <section id="contact" class="bg-[#161b22] p-8 md:p-12 rounded-xl shadow-2xl border border-gray-700 mt-12 mb-12 text-center">
+            <h2 class="text-3xl font-bold text-white mb-6 border-b border-blue-400/50 pb-3 inline-block">Get In Touch</h2>
+            <p class="mb-8 text-gray-300">
+                I'm always interested in discussing new projects, roles, and engineering challenges. Feel free to connect!
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-6 sm:gap-10 text-xl">
+                <!-- Email -->
+                <a href="mailto:tollak.sund@andeby.no" class="flex items-center text-blue-400 hover:text-blue-300 transition duration-200 group">
+                    <i data-lucide="mail" class="w-6 h-6 mr-3 group-hover:scale-110 transition duration-150"></i>
+                    <span class="font-medium">Email</span>
+                </a>
+                <!-- Phone -->
+                <a href="tel:+4747520330" class="flex items-center text-green-400 hover:text-green-300 transition duration-200 group">
+                    <i data-lucide="phone" class="w-6 h-6 mr-3 group-hover:scale-110 transition duration-150"></i>
+                    <span class="font-medium">Phone</span>
+                </a>
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/tollak-sund" target="_blank" rel="noopener noreferrer" class="flex items-center text-indigo-400 hover:text-indigo-300 transition duration-200 group">
+                    <i data-lucide="linkedin" class="w-6 h-6 mr-3 group-hover:scale-110 transition duration-150"></i>
+                    <span class="font-medium">LinkedIn</span>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#161b22] border-t border-gray-700 py-4">
+        <div class="max-w-5xl mx-auto px-4 text-center text-sm text-gray-500">
+            © 2025 Tollak Sund. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- JavaScript for Carousel Logic -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+        
+        // Functions for manual scroll buttons
+        function scrollCarousel(direction) {
+            const carousel = document.getElementById('projectCarousel');
+            // Scroll by the width of approximately one card plus gap (72px width + 6 * 4 = 300px approx)
+            const scrollAmount = carousel.querySelector('.project-card').offsetWidth + 24; 
+            carousel.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+        }
+
+        // Logic to hide/show scroll buttons based on scroll position
+        function updateScrollButtons() {
+            const carousel = document.getElementById('projectCarousel');
+            if (!carousel) return;
+
+            const leftButton = document.querySelector('.scroll-left');
+            const rightButton = document.querySelector('.scroll-right');
+
+            // Check if horizontal scroll is possible (needed for full responsiveness)
+            const canScroll = carousel.scrollWidth > carousel.clientWidth;
+
+            if (canScroll) {
+                const atStart = carousel.scrollLeft < 10;
+                // Use a small buffer (10) for floating point precision
+                const atEnd = carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 10;
+
+                leftButton.style.display = atStart ? 'none' : 'block';
+                rightButton.style.display = atEnd ? 'none' : 'block';
+            } else {
+                leftButton.style.display = 'none';
+                rightButton.style.display = 'none';
+            }
+        }
+
+        // Initial setup and event listeners
+        window.addEventListener('load', () => {
+            // Give a brief timeout for Tailwind classes to render before calculating scroll positions
+            setTimeout(() => {
+                const carousel = document.getElementById('projectCarousel');
+                if (carousel) {
+                    // Center the first item initially if there's enough room
+                    const firstCard = carousel.querySelector('.project-card');
+                    if (firstCard) {
+                        const carouselCenter = carousel.clientWidth / 2;
+                        const cardCenter = firstCard.offsetWidth / 2;
+                        
+                        // Calculate the offset to center the first card
+                        const scrollOffset = firstCard.offsetLeft - (carouselCenter - cardCenter);
+                        carousel.scrollLeft = scrollOffset;
+                    }
+                    updateScrollButtons();
+                    carousel.addEventListener('scroll', updateScrollButtons);
+                }
+            }, 100);
+        });
+
+        window.addEventListener('resize', updateScrollButtons);
+    </script>
 
 </body>
 </html>
