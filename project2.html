@@ -10,7 +10,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         /* Setup Inter Font and overall dark theme aesthetics */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght=100..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
         :root {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
@@ -57,7 +57,7 @@
             <h2 class="text-4xl font-extrabold text-yellow-400 mb-4 leading-tight">The PID Challenge: Precision Line Following</h2>
             
             <p class="text-lg text-gray-300 mb-8">
-                This autonomous robotics project focused on achieving **high-speed precision** in path correction using a custom-built chassis and a carefully calibrated **Proportional-Integral-Derivative (PID)** controller. The goal was to minimize lateral error and achieve the fastest possible lap times.
+                This autonomous robotics project focused on achieving high-speed precision in path correction using a custom-built chassis and a carefully calibrated Proportional-Integral-Derivative (PID) controller. The goal was to minimize lateral error and achieve the fastest possible lap times.
             </p>
             
             <!-- Stats Bar (Visual Indicators) -->
@@ -103,14 +103,14 @@
                         The robot uses an array of infrared reflectance sensors positioned beneath the chassis. These sensors provide continuous data on the line's position relative to the center of the robot, translating light intensity differences into a single, quantifiable error value.
                     </p>
                     <p class="mb-6 text-gray-300">
-                        This error value is fed directly into the **PID controller**, which calculates the necessary correctional output. This output adjusts the differential speed of the two DC motors, allowing the robot to make rapid, smooth steering adjustments to remain centered over the line, even on sharp curves.
+                        This error value is fed directly into the PID controller, which calculates the necessary correctional output. This output adjusts the differential speed of the two DC motors, allowing the robot to make rapid, smooth steering adjustments to remain centered over the line, even on sharp curves.
                     </p>
 
                     <h3 class="text-xl font-semibold text-blue-400 mb-3">Tuning and Validation:</h3>
                     <ul class="list-disc list-inside space-y-2 text-gray-400 ml-4">
-                        <li>**P (Proportional) Gain:** Provided the initial, fast response to the error.</li>
-                        <li>**I (Integral) Gain:** Corrected for steady-state errors (e.g., motor asymmetry) over time.</li>
-                        <li>**D (Derivative) Gain:** Dampened oscillations, crucial for smooth high-speed cornering.</li>
+                        <li>P (Proportional) Gain: Provided the initial, fast response to the error.</li>
+                        <li>I (Integral) Gain: Corrected for steady-state errors (e.g., motor asymmetry) over time.</li>
+                        <li>D (Derivative) Gain: Dampened oscillations, crucial for smooth high-speed cornering.</li>
                     </ul>
                 </div>
             </div>
@@ -124,10 +124,10 @@
             </h2>
             
             <p class="text-lg text-gray-300 mb-6">
-                Beyond simply following the line, the robot also features a **Light-Following System** for target detection. This secondary mode allows the robot to halt its primary line-following routine and instead, use an array of light-dependent resistors (LDRs) to precisely sense a light source (the "target").
+                Beyond simply following the line, the robot also features a Light-Following System for target detection. This secondary mode allows the robot to halt its primary line-following routine and instead, use an array of light-dependent resistors (LDRs) to precisely sense a light source (the "target").
             </p>
             <p class="text-gray-300 mb-6">
-                By implementing a separate closed-loop control system, the robot can **home in on the target** independent of the track line, fulfilling a key challenge requirement. The control system adjusts the motor differential until all LDRs read the same intensity, indicating the light source is directly ahead.
+                By implementing a separate closed-loop control system, the robot can home in on the target independent of the track line, fulfilling a key challenge requirement. The control system adjusts the motor differential until all LDRs read the same intensity, indicating the light source is directly ahead.
             </p>
 
             <h3 class="text-2xl font-bold text-white mt-8 mb-4">Target Detecting Test Run</h3>
@@ -163,7 +163,7 @@
                     <i data-lucide="wrench" class="w-6 h-6 text-blue-400 mb-3"></i>
                     <h3 class="text-xl font-semibold text-white mb-2">Custom Mechanicals</h3>
                     <p class="text-sm text-gray-400">
-                        A custom **3D-printed chassis** optimized for low center of gravity and perfect sensor-to-ground distance calibration.
+                        A custom 3D-printed chassis optimized for low center of gravity and perfect sensor-to-ground distance calibration.
                     </p>
                 </div>
 
