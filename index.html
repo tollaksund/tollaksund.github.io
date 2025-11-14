@@ -20,7 +20,7 @@
             color: #c9d1d9; /* Light grey text */
         }
 
-        /* Video Background Styling */
+        /* Video Background Styling: Both videos share the same fixed size and position */
         .background-video {
             position: fixed;
             top: 0;
@@ -54,9 +54,12 @@
 </head>
 <body class="selection:bg-blue-600 selection:text-white">
 
-    <video autoplay muted playsinline class="background-video" id="backgroundVideo">
+    <video autoplay muted playsinline class="background-video" id="videoA" style="opacity: 1; transition: opacity 1s;">
         <source src="Cover.mp4" type="video/mp4">
-        Your browser does not support the video tag.
+    </video>
+
+    <video muted playsinline class="background-video" id="videoB" style="opacity: 0; transition: opacity 1s;">
+        <source src="LineFollowing.mp4" type="video/mp4">
     </video>
 
     <div class="fixed inset-0 bg-gradient-to-t from-[#0d1117]/95 to-transparent z-[-1] pointer-events-none"></div>
@@ -185,8 +188,10 @@
         // Initialize Lucide Icons
         lucide.createIcons();
         
-        // --- VIDEO CYCLING LOGIC START ---
-        const videoElement = document.getElementById('backgroundVideo');
+        // --- SEAMLESS VIDEO CYCLING LOGIC START ---
+        const videoA = document.getElementById('videoA');
+        const videoB = document.getElementById('videoB');
+
         // List of video sources in the desired loop order
         const videoSources = [
             'Cover.mp4',
@@ -194,34 +199,60 @@
             'TargetDetecting.mp4'
         ];
         let currentVideoIndex = 0;
+        let activeVideo = videoA;
+        let standbyVideo = videoB;
 
-        function playNextVideo() {
-            // Increment index, looping back to 0 when it reaches the end
-            currentVideoIndex = (currentVideoIndex + 1) % videoSources.length;
-            
-            // Get the next video file name
-            const nextVideoSrc = videoSources[currentVideoIndex];
-            
-            // Log for debugging (optional)
-            console.log('Switching video to:', nextVideoSrc);
+        // Helper function to update the source of a video element
+        function setVideoSource(videoElement, src) {
+            // Find the source tag inside the video element
+            const sourceElement = videoElement.querySelector('source');
+            if (sourceElement && sourceElement.src !== src) {
+                sourceElement.src = src;
+                // Load the new video data
+                videoElement.load();
+            }
+        }
 
-            // Update the source of the video element
-            // We use .src and .load() to properly load the new file
-            videoElement.querySelector('source').src = nextVideoSrc;
-            videoElement.load();
-            videoElement.play().catch(error => {
-                // Catch potential error if autoplay is blocked (though 'muted' and 'playsinline' help)
-                console.error('Autoplay prevented:', error);
+        // Function to handle the transition between videos
+        function seamlessTransition() {
+            // 1. Determine the next video index for the queue
+            const nextIndex = (currentVideoIndex + 1) % videoSources.length;
+            const nextVideoSrc = videoSources[nextIndex];
+            
+            // 2. Prepare the standby video for the next-next video
+            const nextNextIndex = (nextIndex + 1) % videoSources.length;
+            const nextNextVideoSrc = videoSources[nextNextIndex];
+
+            // 3. Update the source of the standby video to preload the next-next one
+            setVideoSource(standbyVideo, nextNextVideoSrc);
+
+            // 4. Swap roles: Standby becomes Active, Active becomes Standby
+            [activeVideo, standbyVideo] = [standbyVideo, activeVideo];
+            currentVideoIndex = nextIndex;
+
+            // 5. Visually switch them by manipulating CSS opacity
+            standbyVideo.style.opacity = '0';
+            activeVideo.style.opacity = '1';
+
+            // 6. Start playing the newly active video
+            activeVideo.play().catch(error => {
+                console.error('Autoplay prevented on new video:', error);
             });
+            
+            // 7. Remove the 'ended' listener from the old active video and attach it to the new one
+            standbyVideo.removeEventListener('ended', seamlessTransition);
+            activeVideo.addEventListener('ended', seamlessTransition);
         }
+        
+        // Initial Setup: Preload the second video onto videoB
+        // This makes the first transition seamless
+        setVideoSource(videoB, videoSources[1]); // Preload LineFollowing.mp4
+        
+        // Start the cycle by listening for the first video (videoA) to end
+        videoA.addEventListener('ended', seamlessTransition);
 
-        // Listen for the video's 'ended' event
-        if (videoElement) {
-            // Remove the 'loop' attribute, as we are manually looping now
-            videoElement.removeAttribute('loop');
-            videoElement.addEventListener('ended', playNextVideo);
-        }
-        // --- VIDEO CYCLING LOGIC END ---
+        // --- SEAMLESS VIDEO CYCLING LOGIC END ---
+
 
         // Functions for manual scroll buttons
         function scrollCarousel(direction) {
