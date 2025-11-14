@@ -4,9 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Tollak Sund | Mechanical & Mechatronics Projects</title>
-    <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Load Lucide Icons for Contact Section -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         /* Setup Inter Font and overall dark theme aesthetics */
@@ -56,16 +54,13 @@
 </head>
 <body class="selection:bg-blue-600 selection:text-white">
 
-    <!-- Background video (Keeping the original source and attributes) -->
-    <video autoplay muted loop playsinline class="background-video">
+    <video autoplay muted playsinline class="background-video" id="backgroundVideo">
         <source src="Cover.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
-    <!-- Overlay with gradient fade to body background color -->
     <div class="fixed inset-0 bg-gradient-to-t from-[#0d1117]/95 to-transparent z-[-1] pointer-events-none"></div>
 
-    <!-- Fixed Navbar (Dark, Transparent, and Professional) -->
     <div class="fixed top-0 w-full bg-[#161b22]/90 backdrop-blur-sm shadow-xl flex justify-center gap-6 p-4 z-50 border-b border-gray-700">
         <a href="#home" class="text-white font-semibold hover:text-blue-400 transition duration-150">Home</a>
         <a href="#about" class="text-white font-semibold hover:text-blue-400 transition duration-150">About</a>
@@ -73,7 +68,6 @@
         <a href="#contact" class="text-white font-semibold hover:text-blue-400 transition duration-150">Contact</a>
     </div>
 
-    <!-- Hero section - Full Height, Centered Text -->
     <div id="home" class="h-screen flex justify-center items-center text-white text-center p-5 relative z-10">
         <div class="bg-black/40 p-6 rounded-xl backdrop-blur-sm border border-white/20">
             <h1 class="text-5xl md:text-6xl font-extrabold mb-2 leading-tight">Tollak Sund</h1>
@@ -81,10 +75,8 @@
         </div>
     </div>
 
-    <!-- Main Content Sections -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
-        <!-- About Section -->
         <section id="about" class="bg-[#161b22] p-8 md:p-12 rounded-xl shadow-2xl border border-gray-700 mb-12">
             <h2 class="text-3xl font-bold text-white mb-6 border-b border-blue-400/50 pb-3 inline-block">About Me</h2>
             <p class="max-w-4xl mx-auto text-lg text-gray-300 text-left">
@@ -94,17 +86,14 @@
             </p>
         </section>
 
-        <!-- Projects Section -->
         <section id="projects" class="py-12">
             <div class="text-center mb-8">
                 <h2 class="text-3xl font-bold text-white mb-3 border-b border-blue-400/50 pb-3 inline-block">Featured Projects</h2>
-                <!-- Improved contrast and size of the description text -->
                 <p class="text-gray-300 max-w-2xl mx-auto text-lg">A selection of my work in robotics, control systems, and mechanical design.</p>
             </div>
 
             <div class="carousel-wrapper relative py-4">
                 
-                <!-- Scroll Buttons (Hidden on mobile) -->
                 <button class="scroll-button scroll-left absolute top-1/2 -left-3 transform -translate-y-1/2 bg-gray-800 hover:bg-gray-700 text-white p-3 rounded-full shadow-lg z-20 transition duration-150 border border-gray-600" onclick="scrollCarousel(-1)">
                     <i data-lucide="chevron-left" class="w-5 h-5"></i>
                 </button>
@@ -112,10 +101,8 @@
                     <i data-lucide="chevron-right" class="w-5 h-5"></i>
                 </button>
 
-                <!-- Project Carousel: horizontal scrolling on mobile/desktop -->
                 <div class="project-carousel flex overflow-x-scroll snap-x snap-mandatory gap-6 p-4 md:p-6 [-webkit-overflow-scrolling:touch]" id="projectCarousel">
 
-                    <!-- Project Card 1: Autonomous Drone -->
                     <a class="project-card flex-shrink-0 w-72 lg:w-80 snap-start bg-[#161b22] border border-gray-700 rounded-lg overflow-hidden text-[#c9d1d9] shadow-xl hover:shadow-blue-500/20 transition duration-300 transform hover:-translate-y-1" href="project4.html">
                         <img src="DroneCover.JPG" alt="Autonomous Drone" class="w-full h-48 object-cover">
                         <div class="text p-4">
@@ -124,7 +111,6 @@
                         </div>
                     </a>
 
-                    <!-- Project Card 2: Autonomous Warehouse Robot -->
                     <a class="project-card flex-shrink-0 w-72 lg:w-80 snap-start bg-[#161b22] border border-gray-700 rounded-lg overflow-hidden text-[#c9d1d9] shadow-xl hover:shadow-blue-500/20 transition duration-300 transform hover:-translate-y-1" href="project1.html">
                         <img src="VarehusRobot_cover.jpg" alt="Autonomous Warehouse Robot" class="w-full h-48 object-cover">
                         <div class="text p-4">
@@ -133,7 +119,6 @@
                         </div>
                     </a>
                     
-                    <!-- Project Card 3: Line-Following Robot (The one we just updated) -->
                     <a class="project-card flex-shrink-0 w-72 lg:w-80 snap-start bg-[#161b22] border border-gray-700 rounded-lg overflow-hidden text-[#c9d1d9] shadow-xl hover:shadow-blue-500/20 transition duration-300 transform hover:-translate-y-1" href="project2.html">
                         <img src="linjeRobot.jpg" alt="Line-Following Robot" class="w-full h-48 object-cover">
                         <div class="text p-4">
@@ -142,7 +127,6 @@
                         </div>
                     </a>
 
-                    <!-- Project Card 4: Urchin Remover -->
                     <a class="project-card flex-shrink-0 w-72 lg:w-80 snap-start bg-[#161b22] border border-gray-700 rounded-lg overflow-hidden text-[#c9d1d9] shadow-xl hover:shadow-blue-500/20 transition duration-300 transform hover:-translate-y-1" href="project5.html">
                         <img src="urchinator.jpg" alt="Urchin Remover" class="w-full h-48 object-cover">
                         <div class="text p-4">
@@ -155,7 +139,6 @@
             </div>
         </section>
 
-        <!-- Contact Section - Updated to include details under icons -->
         <section id="contact" class="bg-[#161b22] p-8 md:p-12 rounded-xl shadow-2xl border border-gray-700 mt-12 mb-12 text-center">
             <h2 class="text-3xl font-bold text-white mb-6 border-b border-blue-400/50 pb-3 inline-block">Get In Touch</h2>
             <p class="mb-10 text-gray-300">
@@ -164,7 +147,6 @@
             
             <div class="flex flex-col sm:flex-row justify-center gap-10 sm:gap-16">
                 
-                <!-- Email -->
                 <div class="flex flex-col items-center">
                     <a href="mailto:tollak.sund@andeby.no" class="flex flex-col items-center text-blue-400 hover:text-blue-300 transition duration-200 group mb-2">
                         <i data-lucide="mail" class="w-8 h-8 group-hover:scale-110 transition duration-150 mb-1"></i>
@@ -173,7 +155,6 @@
                     <span class="text-sm text-gray-400 font-mono">tollak.sund@andeby.no</span>
                 </div>
 
-                <!-- Phone -->
                 <div class="flex flex-col items-center">
                     <a href="tel:+4747520330" class="flex flex-col items-center text-green-400 hover:text-green-300 transition duration-200 group mb-2">
                         <i data-lucide="phone" class="w-8 h-8 group-hover:scale-110 transition duration-150 mb-1"></i>
@@ -182,7 +163,6 @@
                     <span class="text-sm text-gray-400 font-mono">+47 475 20 330</span>
                 </div>
 
-                <!-- LinkedIn -->
                 <div class="flex flex-col items-center">
                     <a href="https://www.linkedin.com/in/tollak-sund" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center text-indigo-400 hover:text-indigo-300 transition duration-200 group mb-2">
                         <i data-lucide="linkedin" class="w-8 h-8 group-hover:scale-110 transition duration-150 mb-1"></i>
@@ -195,18 +175,54 @@
 
     </main>
 
-    <!-- Footer -->
     <footer class="bg-[#161b22] border-t border-gray-700 py-4">
         <div class="max-w-5xl mx-auto px-4 text-center text-sm text-gray-500">
             &copy; 2025 Tollak Sund. All Rights Reserved.
         </div>
     </footer>
 
-    <!-- JavaScript for Carousel Logic -->
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
         
+        // --- VIDEO CYCLING LOGIC START ---
+        const videoElement = document.getElementById('backgroundVideo');
+        // List of video sources in the desired loop order
+        const videoSources = [
+            'Cover.mp4',
+            'LineFollowing.mp4',
+            'TargetDetecting.mp4'
+        ];
+        let currentVideoIndex = 0;
+
+        function playNextVideo() {
+            // Increment index, looping back to 0 when it reaches the end
+            currentVideoIndex = (currentVideoIndex + 1) % videoSources.length;
+            
+            // Get the next video file name
+            const nextVideoSrc = videoSources[currentVideoIndex];
+            
+            // Log for debugging (optional)
+            console.log('Switching video to:', nextVideoSrc);
+
+            // Update the source of the video element
+            // We use .src and .load() to properly load the new file
+            videoElement.querySelector('source').src = nextVideoSrc;
+            videoElement.load();
+            videoElement.play().catch(error => {
+                // Catch potential error if autoplay is blocked (though 'muted' and 'playsinline' help)
+                console.error('Autoplay prevented:', error);
+            });
+        }
+
+        // Listen for the video's 'ended' event
+        if (videoElement) {
+            // Remove the 'loop' attribute, as we are manually looping now
+            videoElement.removeAttribute('loop');
+            videoElement.addEventListener('ended', playNextVideo);
+        }
+        // --- VIDEO CYCLING LOGIC END ---
+
         // Functions for manual scroll buttons
         function scrollCarousel(direction) {
             const carousel = document.getElementById('projectCarousel');
