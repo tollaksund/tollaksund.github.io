@@ -48,7 +48,7 @@
                         Developing a robust machine learning algorithm for chicken detection poses a unique set of challenges when the camera is positioned at "chicken height." Unlike top-down surveillance, a ground-level perspective introduces extreme occlusion and dynamic lighting variations.
                     </p>
                     <p class="text-gray-300 leading-relaxed mb-4">
-                        At this height, individual birds frequently block the view of others, making it difficult for standard object detection models to differentiate between overlapping subjects. Furthermore, the high-dust environment and constant movement at eye-level require a housing that preserves the integrity of the training data by keeping the lens pristine and the lighting consistent.
+                        At this height, individual birds frequently block the view of others, making it difficult for standard object detection models to differentiate between overlapping subjects. To preserve data integrity, the housing must keep the lens pristine while ensuring lighting remains consistent despite the harsh, high-dander atmosphere.
                     </p>
                 </div>
                 <div class="rounded-lg overflow-hidden border border-gray-600">
@@ -62,44 +62,65 @@
             <div class="grid sm:grid-cols-3 gap-6">
                 <div class="bg-[#161b22] p-5 rounded-lg border border-blue-800/50">
                     <i data-lucide="sun" class="w-6 h-6 text-blue-400 mb-3"></i>
-                    <h3 class="text-xl font-semibold text-white mb-2">Optical Clarity</h3>
-                    <p class="text-sm text-gray-400">Designed to reduce internal reflection and provide essential shade for consistent lighting.</p>
+                    <h3 class="text-xl font-semibold text-white mb-2">Refraction Control</h3>
+                    <p class="text-sm text-gray-400">Glass-centered design to reduce direct light interference and internal reflections.</p>
                 </div>
                 <div class="bg-[#161b22] p-5 rounded-lg border border-green-800/50">
                     <i data-lucide="shield-check" class="w-6 h-6 text-green-400 mb-3"></i>
-                    <h3 class="text-xl font-semibold text-white mb-2">Anti-Peck Geometry</h3>
-                    <p class="text-sm text-gray-400">Engineered to reduce perching and protect the structure against aggressive scratching.</p>
+                    <h3 class="text-xl font-semibold text-white mb-2">Anti-Peck & Perch</h3>
+                    <p class="text-sm text-gray-400">Sloped geometry prevents perching while protecting the internal core from scratching.</p>
                 </div>
                 <div class="bg-[#161b22] p-5 rounded-lg border border-purple-800/50">
                     <i data-lucide="brain" class="w-6 h-6 text-purple-400 mb-3"></i>
-                    <h3 class="text-xl font-semibold text-white mb-2">Robust Algorithms</h3>
-                    <p class="text-sm text-gray-400">The design combats context bias, allowing for the development of a more robust detection algorithm.</p>
+                    <h3 class="text-xl font-semibold text-white mb-2">Bias Combat</h3>
+                    <p class="text-sm text-gray-400">Modular design helps build a robust algorithm by minimizing environmental context bias.</p>
                 </div>
             </div>
         </section>
 
         <section class="max-w-4xl mx-auto my-8 p-6 md:p-10 bg-[#161b22] rounded-xl shadow-2xl border border-gray-700">
-            <h2 class="text-3xl font-bold text-blue-400 mb-4 border-b border-gray-600 pb-2 inline-block">Upper Housing: Anti-Perch & Durability</h2>
+            <h2 class="text-3xl font-bold text-blue-400 mb-4 border-b border-gray-600 pb-2 inline-block">Upper Housing: Glass Integration & 8-Part Modular Design</h2>
             <div class="mb-6 rounded-xl overflow-hidden shadow-lg border border-gray-600">
-                <img src="top_design_render.jpg" alt="Upper Housing Design" class="w-full object-cover">
+                <img src="top_design_render.jpg" alt="Upper Housing Design with Glass Core" class="w-full object-cover">
             </div>
             <p class="text-gray-300 leading-relaxed">
-                The **Top Part** of the housing is critical for maintaining the position of the camera. To prevent birds from disrupting the field of view, the geometry features steep angles that make perching impossible. This section also serves as a rugged shield, protecting the internal electronics from the constant physical stress of scratching and pecking.
+                The **Top Part** is designed around a central glass container, chosen for its optical properties and durability. This structure is specifically built to reduce direct light intake, thereby minimizing internal reflections that could disrupt the detection model. The exterior geometry is steeply sloped to prevent chickens from perching.
             </p>
+            <div class="mt-6 grid sm:grid-cols-2 gap-4">
+                <div class="p-4 bg-black/30 rounded-lg border border-gray-600">
+                    <h4 class="font-bold text-white mb-1 italic text-blue-400">8-Part Assembly</h4>
+                    <p class="text-sm text-gray-400">Designed in eight separate interlocking parts, allowing for rapid prototyping and easy customization without the high costs associated with large PLA prints.</p>
+                </div>
+                <div class="p-4 bg-black/30 rounded-lg border border-gray-600">
+                    <h4 class="font-bold text-white mb-1 italic text-blue-400">Optical Shielding</h4>
+                    <p class="text-sm text-gray-400">The surrounding segments act as a light shroud, ensuring the glass container only receives filtered light from intended angles.</p>
+                </div>
+            </div>
         </section>
 
         <section class="max-w-4xl mx-auto my-8 p-6 md:p-10 bg-[#161b22] rounded-xl shadow-2xl border border-gray-700">
-            <h2 class="text-3xl font-bold text-green-400 mb-4 border-b border-gray-600 pb-2 inline-block">Lower Housing: Lighting & Optical Integrity</h2>
+            <h2 class="text-3xl font-bold text-green-400 mb-4 border-b border-gray-600 pb-2 inline-block">Lower Housing: Access & Motion Compatibility</h2>
             <div class="mb-6 rounded-xl overflow-hidden shadow-lg border border-gray-600">
-                <img src="bottom_design_render.jpg" alt="Lower Housing Design" class="w-full object-cover">
+                <img src="bottom_design_render.jpg" alt="Lower Housing and Pan-Tilt Mechanism" class="w-full object-cover">
             </div>
-            <p class="text-gray-300 leading-relaxed">
-                The **Bottom Part** is engineered to optimize the quality of the visual data. By using a specialized overhang, the housing creates a shaded environment for the lens, reducing glare and internal reflections that would otherwise confuse a machine learning model.
+            <p class="text-gray-300 leading-relaxed mb-4">
+                The **Bottom Part** is engineered for a tight, secure fit around the camera base while allowing the lens to look out clearly through the glass container. It features a two-part construction, enabling the unit to be easily dismantled for maintenance or camera calibration.
             </p>
-            <div class="mt-4 bg-black/30 p-4 rounded-lg border-l-4 border-purple-500 text-sm italic">
-                <strong>Machine Learning Impact:</strong> By ensuring consistent image quality across different times of day, this design helps eliminate <strong>context bias</strong>. This prevents the algorithm from learning irrelevant environmental cues, leading to a much more robust poultry detection system.
-            </div>
             
+            <div class="grid sm:grid-cols-2 gap-6">
+                <div class="flex items-start">
+                    <i data-lucide="wind" class="w-5 h-5 text-blue-300 mr-3 mt-1"></i>
+                    <p class="text-sm text-gray-400"><strong>Anti-Condensation:</strong> Integrated air holes facilitate passive airflow, preventing moisture buildup inside the glass housing.</p>
+                </div>
+                <div class="flex items-start">
+                    <i data-lucide="move" class="w-5 h-5 text-green-300 mr-3 mt-1"></i>
+                    <p class="text-sm text-gray-400"><strong>Pan-Tilt Support:</strong> Tolerance levels are carefully balanced; the housing is snug but provides enough internal clearance for the camera's mechanical pan and tilt functions.</p>
+                </div>
+            </div>
+
+            <div class="mt-8 bg-black/30 p-4 rounded-lg border-l-4 border-purple-500 text-sm italic">
+                <strong>Machine Learning Impact:</strong> Consistent image quality helps eliminate <strong>context bias</strong>, ensuring the algorithm identifies birds based on their features rather than environmental artifacts.
+            </div>
         </section>
 
         <a href="index.html#projects" class="inline-flex items-center mt-8 text-blue-400 hover:text-blue-300 transition duration-150 font-medium">
