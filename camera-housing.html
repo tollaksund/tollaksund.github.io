@@ -28,7 +28,7 @@
 
     <header class="bg-[#161b22] p-10 text-center border-b border-gray-700">
         <h1 class="text-4xl sm:text-5xl font-extrabold text-white">Poultry Camera Housing</h1>
-        <p class="text-xl text-gray-400 mt-2">Industrial-grade protection for sensitive electronics in harsh agricultural environments.</p>
+        <p class="text-xl text-gray-400 mt-2">Protection for electronics in harsh environments.</p>
     </header>
 
     <nav class="sticky top-0 w-full bg-[#161b22]/90 backdrop-blur-sm shadow-xl flex justify-center gap-6 p-4 z-50 border-b border-gray-700">
@@ -41,21 +41,19 @@
     <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
         <section class="bg-[#161b22] p-6 sm:p-8 rounded-xl border border-gray-700 project-card mb-12">
-            <h2 class="text-3xl font-bold text-white mb-6 border-b border-blue-400/50 pb-2">Problem Statement: Why this Housing?</h2>
+            <h2 class="text-3xl font-bold text-white mb-6 border-b border-blue-400/50 pb-2">Problem Statement: Computer Vision at "Chicken Height"</h2>
             <div class="grid md:grid-cols-2 gap-8 items-center">
                 <div>
                     <p class="text-gray-300 leading-relaxed mb-4">
-                        Modern poultry farming relies increasingly on computer vision to monitor bird health and behavior. However, the environment inside a poultry house is one of the most challenging for electronics.
+                        Developing a robust machine learning algorithm for chicken detection poses a unique set of challenges when the camera is positioned at "chicken height." Unlike top-down surveillance, a ground-level perspective introduces extreme occlusion and dynamic lighting variations.
                     </p>
-                    <ul class="space-y-3">
-                        <li class="flex items-start"><i data-lucide="alert-triangle" class="w-5 h-5 text-yellow-500 mr-2 mt-1"></i> <span><strong>High Dust & Dander:</strong> Fine particles clog fans and coat lenses within hours.</span></li>
-                        <li class="flex items-start"><i data-lucide="droplet" class="w-5 h-5 text-blue-400 mr-2 mt-1"></i> <span><strong>Ammonia Corrosion:</strong> Waste creates a corrosive atmosphere that eats through standard metals.</span></li>
-                        <li class="flex items-start"><i data-lucide="shield-alert" class="w-5 h-5 text-red-400 mr-2 mt-1"></i> <span><strong>Physical Interaction:</strong> Chickens are curious; they peck at cables and attempt to perch on any flat surface.</span></li>
-                    </ul>
+                    <p class="text-gray-300 leading-relaxed mb-4">
+                        At this height, individual birds frequently block the view of others, making it difficult for standard object detection models to differentiate between overlapping subjects. Furthermore, the high-dust environment and constant movement at eye-level require a housing that preserves the integrity of the training data by keeping the lens pristine and the lighting consistent.
+                    </p>
                 </div>
                 <div class="rounded-lg overflow-hidden border border-gray-600">
-                    <img src="environment_context.jpg" alt="Poultry House Environment" class="w-full h-auto">
-                    <p class="text-xs text-center p-2 bg-gray-800 text-gray-400">Context: High-dander environment in a typical commercial house.</p>
+                    <img src="chicken_perspective.jpg" alt="Low level camera perspective in poultry house" class="w-full h-auto">
+                    <p class="text-xs text-center p-2 bg-gray-800 text-gray-400">Low-level perspective challenges: Occlusion and variable lighting.</p>
                 </div>
             </div>
         </section>
@@ -63,49 +61,45 @@
         <section class="mb-12">
             <div class="grid sm:grid-cols-3 gap-6">
                 <div class="bg-[#161b22] p-5 rounded-lg border border-blue-800/50">
-                    <i data-lucide="octagon" class="w-6 h-6 text-blue-400 mb-3"></i>
-                    <h3 class="text-xl font-semibold text-white mb-2">IP65 Design</h3>
-                    <p class="text-sm text-gray-400">Complete protection against dust ingress and low-pressure water jets during cleaning.</p>
+                    <i data-lucide="sun" class="w-6 h-6 text-blue-400 mb-3"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">Optical Clarity</h3>
+                    <p class="text-sm text-gray-400">Designed to reduce internal reflection and provide essential shade for consistent lighting.</p>
                 </div>
                 <div class="bg-[#161b22] p-5 rounded-lg border border-green-800/50">
-                    <i data-lucide="bird" class="w-6 h-6 text-green-400 mb-3"></i>
+                    <i data-lucide="shield-check" class="w-6 h-6 text-green-400 mb-3"></i>
                     <h3 class="text-xl font-semibold text-white mb-2">Anti-Peck Geometry</h3>
-                    <p class="text-sm text-gray-400">Curved surfaces designed to minimize bird interest and prevent perching.</p>
+                    <p class="text-sm text-gray-400">Engineered to reduce perching and protect the structure against aggressive scratching.</p>
                 </div>
                 <div class="bg-[#161b22] p-5 rounded-lg border border-purple-800/50">
-                    <i data-lucide="layers" class="w-6 h-6 text-purple-400 mb-3"></i>
-                    <h3 class="text-xl font-semibold text-white mb-2">Modular Assembly</h3>
-                    <p class="text-sm text-gray-400">Two-part interlocking system for easy lens maintenance and camera calibration.</p>
+                    <i data-lucide="brain" class="w-6 h-6 text-purple-400 mb-3"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">Robust Algorithms</h3>
+                    <p class="text-sm text-gray-400">The design combats context bias, allowing for the development of a more robust detection algorithm.</p>
                 </div>
             </div>
         </section>
 
         <section class="max-w-4xl mx-auto my-8 p-6 md:p-10 bg-[#161b22] rounded-xl shadow-2xl border border-gray-700">
-            <h2 class="text-3xl font-bold text-blue-400 mb-4 border-b border-gray-600 pb-2 inline-block">Upper Housing: Anti-Perch & Seal</h2>
+            <h2 class="text-3xl font-bold text-blue-400 mb-4 border-b border-gray-600 pb-2 inline-block">Upper Housing: Anti-Perch & Durability</h2>
             <div class="mb-6 rounded-xl overflow-hidden shadow-lg border border-gray-600">
                 <img src="top_design_render.jpg" alt="Upper Housing Design" class="w-full object-cover">
             </div>
             <p class="text-gray-300 leading-relaxed">
-                The **Top Part** of the housing serves as the primary structural shield. To prevent chickens from perching—which adds weight and obscures the view—I implemented a **high-angle sloped roof geometry**. This ensures birds cannot gain a stable footing. 
+                The **Top Part** of the housing is critical for maintaining the position of the camera. To prevent birds from disrupting the field of view, the geometry features steep angles that make perching impossible. This section also serves as a rugged shield, protecting the internal electronics from the constant physical stress of scratching and pecking.
             </p>
-            <div class="mt-4 bg-black/30 p-4 rounded-lg border-l-4 border-blue-500 text-sm italic">
-                <strong>Engineering Detail:</strong> The interface includes a recessed groove for a silicone gasket, ensuring that when the two halves meet, an airtight seal is maintained against the fine dust common in poultry houses.
-            </div>
         </section>
 
         <section class="max-w-4xl mx-auto my-8 p-6 md:p-10 bg-[#161b22] rounded-xl shadow-2xl border border-gray-700">
-            <h2 class="text-3xl font-bold text-green-400 mb-4 border-b border-gray-600 pb-2 inline-block">Lower Housing: Lens & Mounting</h2>
+            <h2 class="text-3xl font-bold text-green-400 mb-4 border-b border-gray-600 pb-2 inline-block">Lower Housing: Lighting & Optical Integrity</h2>
             <div class="mb-6 rounded-xl overflow-hidden shadow-lg border border-gray-600">
                 <img src="bottom_design_render.jpg" alt="Lower Housing Design" class="w-full object-cover">
             </div>
             <p class="text-gray-300 leading-relaxed">
-                The **Bottom Part** is dedicated to optical clarity and internal component mounting. It features a precision-cut acrylic viewport protected by a deep "brow" to prevent shadows and reduce pecking directly at the lens. 
+                The **Bottom Part** is engineered to optimize the quality of the visual data. By using a specialized overhang, the housing creates a shaded environment for the lens, reducing glare and internal reflections that would otherwise confuse a machine learning model.
             </p>
-            <ul class="mt-4 space-y-2 text-gray-400 text-sm">
-                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i> Integrated PCB standoffs for the camera module.</li>
-                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i> Recessed cable entry point to prevent wire exposure to birds.</li>
-                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i> Heat dissipation venting designed to keep dust out while allowing airflow.</li>
-            </ul>
+            <div class="mt-4 bg-black/30 p-4 rounded-lg border-l-4 border-purple-500 text-sm italic">
+                <strong>Machine Learning Impact:</strong> By ensuring consistent image quality across different times of day, this design helps eliminate <strong>context bias</strong>. This prevents the algorithm from learning irrelevant environmental cues, leading to a much more robust poultry detection system.
+            </div>
+            
         </section>
 
         <a href="index.html#projects" class="inline-flex items-center mt-8 text-blue-400 hover:text-blue-300 transition duration-150 font-medium">
