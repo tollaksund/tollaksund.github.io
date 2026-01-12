@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Tollak Sund | Mechanical & Mechatronics Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;500&display=swap');
+        
+        :root {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: 'Inter', sans-serif;
+            /* Subtle CAD Grid Background */
+            background-image: radial-gradient(#1f2937 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        /* Video background handling */
+        .video-bg-container {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            overflow: hidden;
+        }
+        
+        .background-video {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            opacity: 0.3; /* Low opacity to keep focus on text */
+            filter: grayscale(40%) blur(2px);
+        }
+
+        .hero-gradient {
+            background: linear-gradient(to bottom, rgba(13, 17, 23, 0.8), #0d1117);
+        }
+
+        /* Technical Notch Effect */
+        .tech-card {
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .tech-card:hover {
+            transform: translateY(-5px);
+            border-color: #3b82f6;
+        }
+    </style>
+</head>
+<body class="selection:bg-blue-600 selection:text-white">
+
+    <div class="video-bg-container">
+        <video autoplay muted loop playsinline class="background-video">
+            <source src="Cover.mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-[#0d1117]/60 backdrop-blur-[2px]"></div>
+    </div>
+
+    <nav class="fixed top-0 w-full bg-[#161b22]/80 backdrop-blur-md z-50 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
+            <span class="mono text-blue-400 font-bold tracking-tighter text-xl">T.SUND_</span>
+            <div class="hidden md:flex gap-8">
+                <a href="#about" class="hover:text-blue-400 transition text-sm font-medium uppercase tracking-widest">About</a>
+                <a href="#projects" class="hover:text-blue-400 transition text-sm font-medium uppercase tracking-widest">Projects</a>
+                <a href="#skills" class="hover:text-blue-400 transition text-sm font-medium uppercase tracking-widest">Skills</a>
+                <a href="#contact" class="hover:text-blue-400 transition text-sm font-medium uppercase tracking-widest">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="min-h-screen flex items-center pt-20">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <div class="inline-block px-3 py-1 border border-blue-500/30 bg-blue-500/10 text-blue-400 text-xs mono mb-6">
+                    AVAILABLE FOR INTERNSHIP 2026
+                </div>
+                <h1 class="text-6xl md:text-8xl font-extrabold text-white leading-none mb-6">
+                    Tollak <span class="text-blue-500">Sund</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-400 font-light mb-8 max-w-lg">
+                    Mechanical Engineer specializing in <span class="text-white border-b border-blue-500">Mechatronics</span> and autonomous robotics.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#projects" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 font-bold transition">VIEW SYSTEMS</a>
+                    <a href="#contact" class="border border-gray-600 hover:border-white px-8 py-3 font-bold transition">GET IN TOUCH</a>
+                </div>
+            </div>
+            <div class="hidden lg:block">
+                <div class="p-8 border border-gray-800 bg-[#161b22]/40 backdrop-blur-xl relative">
+                    <div class="absolute -top-2 -left-2 w-4 h-4 border-t-2 border-l-2 border-blue-500"></div>
+                    <div class="absolute -bottom-2 -right-2 w-4 h-4 border-b-2 border-r-2 border-blue-500"></div>
+                    <div class="mono text-[10px] text-gray-500 mb-4 uppercase tracking-widest">System_Status: Active</div>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Focused on the intersection of hardware and software. Developing robust solutions for complex mechanical environments using PID Control, Embedded C++, and CAD.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 space-y-32 pb-32">
+
+        <section id="about" class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div class="md:col-span-1">
+                <h2 class="text-sm mono text-blue-500 uppercase tracking-widest mb-4">// 01. Background</h2>
+                <h3 class="text-3xl font-bold text-white leading-tight">Engineering Across Borders</h3>
+            </div>
+            <div class="md:col-span-2 text-lg text-gray-400 space-y-6">
+                <p>
+                    Currently a final year student at <span class="text-white font-semibold">NTNU</span> (Norway) with international experience from <span class="text-white font-semibold">QUT</span> (Australia). My work bridges the gap between core mechanical engineering and digital intelligence.
+                </p>
+                <div class="grid grid-cols-2 gap-4 mono text-sm">
+                    <div class="p-4 bg-gray-900/50 border border-gray-800">
+                        <span class="block text-blue-500 mb-1">LOCATION</span>
+                        Trondheim, Norway
+                    </div>
+                    <div class="p-4 bg-gray-900/50 border border-gray-800">
+                        <span class="block text-blue-500 mb-1">FOCUS</span>
+                        Robotics / Mechatronics
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="mb-12 flex justify-between items-end">
+                <div>
+                    <h2 class="text-sm mono text-blue-500 uppercase tracking-widest mb-4">// 02. Selected Works</h2>
+                    <h3 class="text-4xl font-bold text-white">Project Archive</h3>
+                </div>
+            </div>
+
+            
+
+            <div class="grid grid-cols-1 md:grid-cols-6 gap-6">
+                <a href="camera-housing.html" class="md:col-span-4 tech-card bg-[#161b22] border border-gray-800 group overflow-hidden">
+                    <img src="camera_housing_render.jpg" class="w-full h-80 object-cover opacity-60 group-hover:scale-105 transition duration-500" alt="Camera Housing">
+                    <div class="p-6 absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent">
+                        <span class="mono text-xs text-blue-400">MECHANICAL DESIGN / AGRI-TECH</span>
+                        <h4 class="text-2xl font-bold text-white">Poultry Camera Housing</h4>
+                    </div>
+                </a>
+
+                <a href="project4.html" class="md:col-span-2 tech-card bg-[#161b22] border border-gray-800 group overflow-hidden">
+                    <img src="DroneCover.JPG" class="w-full h-80 object-cover opacity-60 group-hover:scale-105 transition duration-500" alt="Drone">
+                    <div class="p-6 absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent">
+                        <span class="mono text-xs text-blue-400">ROBOTICS</span>
+                        <h4 class="text-xl font-bold text-white">Autonomous Drone</h4>
+                    </div>
+                </a>
+
+                <a href="project1.html" class="md:col-span-2 tech-card bg-[#161b22] border border-gray-800 group overflow-hidden">
+                    <div class="p-6">
+                        <span class="mono text-xs text-blue-400">LOGISTICS</span>
+                        <h4 class="text-xl font-bold text-white mb-4">Warehouse Robot</h4>
+                        <p class="text-sm text-gray-400">Dynamic navigation in complex industrial environments.</p>
+                    </div>
+                </a>
+
+                <a href="project2.html" class="md:col-span-2 tech-card bg-[#161b22] border border-gray-800 group overflow-hidden">
+                    <div class="p-6">
+                        <span class="mono text-xs text-blue-400">CONTROL THEORY</span>
+                        <h4 class="text-xl font-bold text-white mb-4">PID Path Correction</h4>
+                        <p class="text-sm text-gray-400">Real-time infrared path correction at high velocities.</p>
+                    </div>
+                </a>
+
+                <a href="project5.html" class="md:col-span-2 tech-card bg-[#161b22] border border-gray-800 group overflow-hidden">
+                    <div class="p-6">
+                        <span class="mono text-xs text-blue-400">ENV_TECH</span>
+                        <h4 class="text-xl font-bold text-white mb-4">Urchin Remover</h4>
+                        <p class="text-sm text-gray-400">Ocean cleanup robotics via mechanical automation.</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section id="skills" class="bg-[#161b22]/50 border border-gray-800 p-8 md:p-12">
+            <h2 class="text-sm mono text-blue-500 uppercase tracking-widest mb-8">// 03. Tech Stack</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div>
+                    <h4 class="text-white font-bold mb-4 flex items-center gap-2">
+                        <i data-lucide="settings" class="w-4 h-4"></i> Hardware
+                    </h4>
+                    <ul class="space-y-2 text-sm text-gray-400 mono">
+                        <li>- SolidWorks / Fusion 360</li>
+                        <li>- 3D Printing / CNC</li>
+                        <li>- Mechatronic Assembly</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4 flex items-center gap-2">
+                        <i data-lucide="code" class="w-4 h-4"></i> Software
+                    </h4>
+                    <ul class="space-y-2 text-sm text-gray-400 mono">
+                        <li>- Embedded C++ / Arduino</li>
+                        <li>- Python (Data/CV)</li>
+                        <li>- MATLAB / Simulink</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4 flex items-center gap-2">
+                        <i data-lucide="cpu" class="w-4 h-4"></i> Electronics
+                    </h4>
+                    <ul class="space-y-2 text-sm text-gray-400 mono">
+                        <li>- PCB Design</li>
+                        <li>- PID Control Systems</li>
+                        <li>- Sensor Integration</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4 flex items-center gap-2">
+                        <i data-lucide="globe" class="w-4 h-4"></i> Languages
+                    </h4>
+                    <ul class="space-y-2 text-sm text-gray-400 mono">
+                        <li>- Norwegian (Native)</li>
+                        <li>- English (Professional)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="text-center">
+            <h2 class="text-sm mono text-blue-500 uppercase tracking-widest mb-4">// 04. Contact</h2>
+            <h3 class="text-5xl font-extrabold text-white mb-8">Start a Conversation.</h3>
+            <div class="flex flex-wrap justify-center gap-6">
+                <a href="mailto:tollak.sund@andeby.no" class="flex items-center gap-3 bg-white text-black px-6 py-3 font-bold hover:bg-blue-500 hover:text-white transition">
+                    <i data-lucide="mail" class="w-5 h-5"></i> EMAIL ME
+                </a>
+                <a href="https://linkedin.com/in/tollak-sund" class="flex items-center gap-3 border border-gray-600 px-6 py-3 font-bold hover:border-blue-500 transition">
+                    <i data-lucide="linkedin" class="w-5 h-5"></i> LINKEDIN
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-gray-800 py-12 bg-[#0d1117]">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <span class="mono text-gray-600 text-xs uppercase tracking-tighter">© 2026 Tollak Sund // Built with Tailwind & Lucide</span>
+            <div class="flex gap-6 text-gray-500">
+                <i data-lucide="git-branch" class="w-4 h-4"></i>
+                <i data-lucide="database" class="w-4 h-4"></i>
+                <i data-lucide="cpu" class="w-4 h-4"></i>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
