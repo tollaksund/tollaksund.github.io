@@ -1,38 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Tollak Sund | Mechanical & Mechatronics Projects</title>
+    <title>Tollak Sund | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        :root { font-family: 'Inter', sans-serif; }
+        body { background-color: #0d1117; color: #c9d1d9; }
         
-        :root {
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: #0d1117;
-            color: #c9d1d9;
-        }
-
         .background-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-            z-index: -2;
-            pointer-events: none;
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            object-fit: cover; z-index: -2; pointer-events: none;
         }
 
-        /* Smooth fade for the grid cards */
-        .project-card {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        .glass-card {
+            background: rgba(22, 27, 34, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            border-color: #3b82f6;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.3);
+        }
+
+        .filter-btn.active {
+            background-color: #3b82f6;
+            color: white;
+            border-color: #3b82f6;
         }
     </style>
 </head>
@@ -41,152 +41,158 @@
     <video autoplay muted playsinline class="background-video" id="videoA" style="opacity: 1; transition: opacity 1s;">
         <source src="Cover.mp4" type="video/mp4">
     </video>
-
     <video muted playsinline class="background-video" id="videoB" style="opacity: 0; transition: opacity 1s;">
         <source src="LineFollowing.mp4" type="video/mp4">
     </video>
 
-    <div class="fixed inset-0 bg-gradient-to-t from-[#0d1117]/95 via-[#0d1117]/80 to-transparent z-[-1] pointer-events-none"></div>
+    <div class="fixed inset-0 bg-gradient-to-b from-black/60 via-transparent to-[#0d1117] z-[-1]"></div>
 
-    <nav class="fixed top-0 w-full bg-[#161b22]/90 backdrop-blur-sm shadow-xl flex justify-center gap-6 p-4 z-50 border-b border-gray-700">
-        <a href="#home" class="text-white font-semibold hover:text-blue-400 transition duration-150">Home</a>
-        <a href="#about" class="text-white font-semibold hover:text-blue-400 transition duration-150">About</a>
-        <a href="#projects" class="text-white font-semibold hover:text-blue-400 transition duration-150">Projects</a>
-        <a href="#contact" class="text-white font-semibold hover:text-blue-400 transition duration-150">Contact</a>
+    <nav class="fixed top-0 w-full bg-[#161b22]/80 backdrop-blur-md z-50 border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <span class="font-bold text-xl tracking-tighter text-white">TOLLAK SUND</span>
+            <div class="hidden md:flex gap-8">
+                <a href="#home" class="hover:text-blue-400 transition">Home</a>
+                <a href="#about" class="hover:text-blue-400 transition">About</a>
+                <a href="#projects" class="hover:text-blue-400 transition">Projects</a>
+                <a href="#contact" class="hover:text-blue-400 transition">Contact</a>
+            </div>
+        </div>
     </nav>
 
-    <header id="home" class="h-screen flex justify-center items-center text-white text-center p-5 relative z-10">
-        <div class="bg-black/40 p-8 rounded-2xl backdrop-blur-md border border-white/10">
-            <h1 class="text-5xl md:text-7xl font-extrabold mb-4 tracking-tight">Tollak Sund</h1>
-            <p class="text-xl md:text-2xl font-light text-blue-300">Mechanical Engineering | Mechatronics | Robotics</p>
+    <header id="home" class="h-screen flex flex-col justify-center items-center text-center px-4">
+        <h1 class="text-6xl md:text-8xl font-black text-white mb-4 tracking-tight">Tollak Sund</h1>
+        <p class="text-xl md:text-2xl font-light text-blue-400 max-w-2xl">Mechanical Engineering & Mechatronics</p>
+        <div class="mt-10 animate-bounce">
+            <i data-lucide="chevron-down" class="w-8 h-8"></i>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
+    <main class="max-w-7xl mx-auto px-6 py-20 space-y-32">
 
-        <section id="about" class="bg-[#161b22]/80 backdrop-blur-md p-8 md:p-12 rounded-2xl shadow-2xl border border-gray-700 mb-20">
-            <h2 class="text-3xl font-bold text-white mb-6 border-b border-blue-500/50 pb-3 inline-block">About Me</h2>
-            <p class="max-w-4xl text-lg text-gray-300 leading-relaxed">
-                I’m Tollak Sund, a final year Mechanical Engineering student at **NTNU**. I recently completed an exchange at **QUT** in Australia, broadening my perspective on mechatronics and engineering design. My work blends core mechanical systems with embedded programming and 3D design to create functional, complex machines.
-            </p>
+        <section id="about" class="glass-card p-8 md:p-16 rounded-3xl">
+            <div class="grid md:grid-cols-3 gap-12 items-center">
+                <div class="md:col-span-1">
+                    <h2 class="text-4xl font-bold text-white leading-tight">Bridging Hardware & Software</h2>
+                </div>
+                <div class="md:col-span-2 text-lg text-gray-300 leading-relaxed">
+                    I’m a final year Mechanical Engineering student at <strong>NTNU</strong>. My focus is on integrating physical systems with intelligent control. From PID loops in robotics to robust mechanical housings, I enjoy the full lifecycle of product development.
+                </div>
+            </div>
         </section>
 
-        <section id="projects" class="py-12">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-white mb-4">Featured Projects</h2>
-                <div class="h-1 w-20 bg-blue-500 mx-auto rounded-full mb-6"></div>
-                <p class="text-gray-400 max-w-2xl mx-auto text-lg">Integrated systems combining mechanical design, electronics, and control theory.</p>
+        <section id="projects">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <h2 class="text-4xl font-bold text-white mb-2">Featured Projects</h2>
+                    <p class="text-gray-400">Filter by discipline to see specific expertise.</p>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="filterProjects('all')" class="filter-btn active px-5 py-2 rounded-full border border-white/10 hover:border-blue-500 transition" id="btn-all">All</button>
+                    <button onclick="filterProjects('robotics')" class="filter-btn px-5 py-2 rounded-full border border-white/10 hover:border-blue-500 transition">Robotics</button>
+                    <button onclick="filterProjects('mechanical')" class="filter-btn px-5 py-2 rounded-full border border-white/10 hover:border-blue-500 transition">Mechanical</button>
+                    <button onclick="filterProjects('mechatronics')" class="filter-btn px-5 py-2 rounded-full border border-white/10 hover:border-blue-500 transition">Mechatronics</button>
+                </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectGrid">
                 
-                <a href="camera-housing.html" class="project-card group bg-[#161b22] border border-gray-700 rounded-xl overflow-hidden hover:border-blue-500/50 hover:shadow-[0_0_30px_-10px_rgba(59,130,246,0.3)]">
-                    <div class="relative h-52 overflow-hidden">
-                        <img src="camera_housing_render.jpg" alt="Poultry Camera" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#161b22] to-transparent opacity-60"></div>
-                    </div>
+                <div class="project-item glass-card rounded-2xl overflow-hidden" data-category="mechanical">
+                    <img src="camera_housing_render.jpg" class="w-full h-56 object-cover" alt="Poultry Housing">
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition">Poultry Camera Housing</h3>
-                        <p class="text-gray-400 text-sm mb-4">Anti-peck enclosure designed for high-dust agricultural environments.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-[10px] px-2 py-1 bg-blue-900/30 text-blue-400 rounded border border-blue-800">CAD/CAM</span>
-                            <span class="text-[10px] px-2 py-1 bg-gray-800 text-gray-400 rounded border border-gray-700">3D Printing</span>
-                        </div>
+                        <span class="text-xs font-bold text-blue-400 uppercase tracking-widest">Mechanical Design</span>
+                        <h3 class="text-xl font-bold text-white mt-1 mb-3">Poultry Camera Housing</h3>
+                        <p class="text-sm text-gray-400">Anti-peck enclosure for high-dust environments.</p>
+                        <a href="camera-housing.html" class="inline-flex items-center mt-4 text-blue-400 hover:text-white transition">View Details <i data-lucide="arrow-up-right" class="w-4 h-4 ml-1"></i></a>
                     </div>
-                </a>
+                </div>
 
-                <a href="project4.html" class="project-card group bg-[#161b22] border border-gray-700 rounded-xl overflow-hidden hover:border-blue-500/50 hover:shadow-[0_0_30px_-10px_rgba(59,130,246,0.3)]">
-                    <div class="relative h-52 overflow-hidden">
-                        <img src="DroneCover.JPG" alt="Autonomous Drone" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    </div>
+                <div class="project-item glass-card rounded-2xl overflow-hidden" data-category="robotics">
+                    <img src="DroneCover.JPG" class="w-full h-56 object-cover" alt="Drone">
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition">Autonomous Drone</h3>
-                        <p class="text-gray-400 text-sm mb-4">Indoor navigation using visual markers and inertial sensor fusion.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-[10px] px-2 py-1 bg-blue-900/30 text-blue-400 rounded border border-blue-800">C++</span>
-                            <span class="text-[10px] px-2 py-1 bg-gray-800 text-gray-400 rounded border border-gray-700">Sensors</span>
-                        </div>
+                        <span class="text-xs font-bold text-blue-400 uppercase tracking-widest">Robotics</span>
+                        <h3 class="text-xl font-bold text-white mt-1 mb-3">Autonomous Drone</h3>
+                        <p class="text-sm text-gray-400">Indoor navigation using visual markers and IMU data.</p>
+                        <a href="project4.html" class="inline-flex items-center mt-4 text-blue-400 hover:text-white transition">View Details <i data-lucide="arrow-up-right" class="w-4 h-4 ml-1"></i></a>
                     </div>
-                </a>
+                </div>
 
-                <a href="project1.html" class="project-card group bg-[#161b22] border border-gray-700 rounded-xl overflow-hidden hover:border-blue-500/50 hover:shadow-[0_0_30px_-10px_rgba(59,130,246,0.3)]">
-                    <div class="relative h-52 overflow-hidden">
-                        <img src="VarehusRobot_cover.jpg" alt="Warehouse Robot" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    </div>
+                <div class="project-item glass-card rounded-2xl overflow-hidden" data-category="mechatronics">
+                    <img src="VarehusRobot_cover.jpg" class="w-full h-56 object-cover" alt="Warehouse Robot">
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition">Warehouse Robot</h3>
-                        <p class="text-gray-400 text-sm mb-4">Dynamic pathfinding and payload handling in structured environments.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-[10px] px-2 py-1 bg-blue-900/30 text-blue-400 rounded border border-blue-800">Pathfinding</span>
-                            <span class="text-[10px] px-2 py-1 bg-gray-800 text-gray-400 rounded border border-gray-700">Robotics</span>
-                        </div>
+                        <span class="text-xs font-bold text-blue-400 uppercase tracking-widest">Mechatronics</span>
+                        <h3 class="text-xl font-bold text-white mt-1 mb-3">Warehouse Robot</h3>
+                        <p class="text-sm text-gray-400">Dynamic pathfinding and automated payload handling.</p>
+                        <a href="project1.html" class="inline-flex items-center mt-4 text-blue-400 hover:text-white transition">View Details <i data-lucide="arrow-up-right" class="w-4 h-4 ml-1"></i></a>
                     </div>
-                </a>
+                </div>
 
-                <a href="project2.html" class="project-card group bg-[#161b22] border border-gray-700 rounded-xl overflow-hidden hover:border-blue-500/50 hover:shadow-[0_0_30px_-10px_rgba(59,130,246,0.3)]">
-                    <div class="relative h-52 overflow-hidden">
-                        <img src="linjeRobot.jpg" alt="Line-Following Robot" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    </div>
+                <div class="project-item glass-card rounded-2xl overflow-hidden" data-category="robotics">
+                    <img src="linjeRobot.jpg" class="w-full h-56 object-cover" alt="Line Robot">
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition">Line-Following Robot</h3>
-                        <p class="text-gray-400 text-sm mb-4">High-speed PID control implementation for infrared path tracking.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-[10px] px-2 py-1 bg-blue-900/30 text-blue-400 rounded border border-blue-800">PID Control</span>
-                            <span class="text-[10px] px-2 py-1 bg-gray-800 text-gray-400 rounded border border-gray-700">Arduino</span>
-                        </div>
+                        <span class="text-xs font-bold text-blue-400 uppercase tracking-widest">Robotics</span>
+                        <h3 class="text-xl font-bold text-white mt-1 mb-3">PID Line Follower</h3>
+                        <p class="text-sm text-gray-400">High-speed precision path correction via IR arrays.</p>
+                        <a href="project2.html" class="inline-flex items-center mt-4 text-blue-400 hover:text-white transition">View Details <i data-lucide="arrow-up-right" class="w-4 h-4 ml-1"></i></a>
                     </div>
-                </a>
+                </div>
 
-                <a href="project5.html" class="project-card group bg-[#161b22] border border-gray-700 rounded-xl overflow-hidden hover:border-blue-500/50 hover:shadow-[0_0_30px_-10px_rgba(59,130,246,0.3)]">
-                    <div class="relative h-52 overflow-hidden">
-                        <img src="urchinator.jpg" alt="Urchin Remover" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    </div>
+                <div class="project-item glass-card rounded-2xl overflow-hidden" data-category="mechanical">
+                    <img src="urchinator.jpg" class="w-full h-56 object-cover" alt="Urchin Remover">
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition">Urchin Remover</h3>
-                        <p class="text-gray-400 text-sm mb-4">Environmental robotics designed for ocean ecosystem restoration.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-[10px] px-2 py-1 bg-blue-900/30 text-blue-400 rounded border border-blue-800">Mechanism Design</span>
-                            <span class="text-[10px] px-2 py-1 bg-gray-800 text-gray-400 rounded border border-gray-700">Ocean Tech</span>
-                        </div>
+                        <span class="text-xs font-bold text-blue-400 uppercase tracking-widest">Mechanical Design</span>
+                        <h3 class="text-xl font-bold text-white mt-1 mb-3">Urchin Remover</h3>
+                        <p class="text-sm text-gray-400">Environmental robotics for ocean ecosystem restoration.</p>
+                        <a href="project5.html" class="inline-flex items-center mt-4 text-blue-400 hover:text-white transition">View Details <i data-lucide="arrow-up-right" class="w-4 h-4 ml-1"></i></a>
                     </div>
-                </a>
+                </div>
 
             </div>
         </section>
 
-        <section id="contact" class="bg-[#161b22]/90 p-8 md:p-12 rounded-2xl shadow-2xl border border-gray-700 mt-20 mb-12 text-center">
-            <h2 class="text-3xl font-bold text-white mb-6">Get In Touch</h2>
-            <p class="mb-10 text-gray-400">Discussing new projects, roles, and engineering challenges.</p>
-            
-            <div class="flex flex-wrap justify-center gap-8 md:gap-16">
-                <a href="mailto:tollak.sund@andeby.no" class="flex flex-col items-center group">
-                    <div class="p-4 bg-blue-600/10 rounded-full group-hover:bg-blue-600/20 transition mb-2">
-                        <i data-lucide="mail" class="w-6 h-6 text-blue-400"></i>
-                    </div>
-                    <span class="text-sm font-mono text-gray-300">tollak.sund@andeby.no</span>
-                </a>
-                <a href="https://www.linkedin.com/in/tollak-sund" target="_blank" class="flex flex-col items-center group">
-                    <div class="p-4 bg-indigo-600/10 rounded-full group-hover:bg-indigo-600/20 transition mb-2">
-                        <i data-lucide="linkedin" class="w-6 h-6 text-indigo-400"></i>
-                    </div>
-                    <span class="text-sm font-mono text-gray-300">/in/tollak-sund</span>
-                </a>
+        <section id="contact" class="pb-20">
+            <div class="glass-card rounded-3xl p-12 text-center">
+                <h2 class="text-3xl font-bold text-white mb-8">Ready to collaborate?</h2>
+                <div class="flex flex-wrap justify-center gap-6">
+                    <a href="mailto:tollak.sund@andeby.no" class="flex items-center gap-3 bg-white/5 px-6 py-3 rounded-xl hover:bg-blue-600 transition">
+                        <i data-lucide="mail" class="w-5 h-5"></i> Email Me
+                    </a>
+                    <a href="https://linkedin.com/in/tollak-sund" class="flex items-center gap-3 bg-white/5 px-6 py-3 rounded-xl hover:bg-indigo-600 transition">
+                        <i data-lucide="linkedin" class="w-5 h-5"></i> LinkedIn
+                    </a>
+                </div>
             </div>
         </section>
 
     </main>
 
-    <footer class="bg-[#161b22] border-t border-gray-800 py-8">
-        <div class="max-w-5xl mx-auto px-4 text-center text-sm text-gray-500">
-            &copy; 2026 Tollak Sund. Built with Tailwind CSS.
-        </div>
+    <footer class="py-10 text-center text-gray-500 border-t border-white/5">
+        <p>&copy; 2026 Tollak Sund. Built with Precision.</p>
     </footer>
 
     <script>
-        // Initialize Lucide Icons
         lucide.createIcons();
-        
-        // --- SEAMLESS VIDEO CYCLING LOGIC ---
+
+        // --- Filter Logic ---
+        function filterProjects(category) {
+            const items = document.querySelectorAll('.project-item');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            // Update buttons
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                    setTimeout(() => item.style.opacity = '1', 10);
+                } else {
+                    item.style.opacity = '0';
+                    setTimeout(() => item.style.display = 'none', 300);
+                }
+            });
+        }
+
+        // --- Video Transition Logic (Original) ---
         const videoA = document.getElementById('videoA');
         const videoB = document.getElementById('videoB');
         const videoSources = ['Cover.mp4', 'LineFollowing.mp4', 'TargetDetecting.mp4'];
@@ -205,21 +211,16 @@
         function seamlessTransition() {
             const nextIndex = (currentVideoIndex + 1) % videoSources.length;
             const nextNextIndex = (nextIndex + 1) % videoSources.length;
-            
             setVideoSource(standbyVideo, videoSources[nextNextIndex]);
-
             [activeVideo, standbyVideo] = [standbyVideo, activeVideo];
             currentVideoIndex = nextIndex;
-
             standbyVideo.style.opacity = '0';
             activeVideo.style.opacity = '1';
-
-            activeVideo.play().catch(e => console.error(e));
-            
+            activeVideo.play().catch(e => console.log(e));
             standbyVideo.removeEventListener('ended', seamlessTransition);
             activeVideo.addEventListener('ended', seamlessTransition);
         }
-        
+
         setVideoSource(videoB, videoSources[1]);
         videoA.addEventListener('ended', seamlessTransition);
     </script>
